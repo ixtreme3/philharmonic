@@ -3,8 +3,9 @@ package com.bd.philharmonic.CulturalBuilding;
 import javax.persistence.*;
 
 
-@Entity(name = "CulturalBuilding")
-@Table(name = "CulturalBuilding")
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "cultural_building")
 public class CulturalBuilding {
 
     @Id
@@ -12,14 +13,19 @@ public class CulturalBuilding {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cultural_building_sequence")
     @Column(name = "id", updatable = false)
     private Long id_place;
+
     @Column(name = "name", nullable = false)
     private String name;
+
     @Column(name = "type_of_building", nullable = false)
     private String type_of_building;
+
     @Column(name = "address", nullable = false)
     private String address;
+
     @Column(name = "capacity", nullable = false)
     private int capacity;
+
 
     public Long getId_place() {
         return id_place;
