@@ -11,7 +11,7 @@ public class CulturalBuilding {
     @Id
     @SequenceGenerator(name = "cultural_building_sequence", sequenceName = "cultural_building_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cultural_building_sequence")
-    @Column(name = "id", updatable = false)
+    @Column(name = "id_place", updatable = false)
     private Long id_place;
 
     @Column(name = "name", nullable = false)
