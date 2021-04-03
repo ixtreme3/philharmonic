@@ -10,34 +10,34 @@ import javax.persistence.Table;
 @Table(name = "cinema")
 public class Cinema extends CulturalBuilding {
 
-    @Column(name = "scene", nullable = false)
-    private String scene;
+    @Column(name = "screen_size", nullable = false)
+    private int screen_size;
 
-    @Column(name = "number_of_balconies", nullable = false)
-    private int number_of_balconies;
+    @Column(name = "screen_type", nullable = false)
+    private String screen_type;
 
 
-    public String getScene() {
-        return scene;
+    public int getScreen_size() {
+        return screen_size;
     }
 
-    public void setScene(String scene) {
-        this.scene = scene;
+    public void setScreen_size(int screen_size) {
+        this.screen_size = screen_size;
     }
 
-    public int getNumber_of_balconies() {
-        return number_of_balconies;
+    public String getScreen_type() {
+        return screen_type;
     }
 
-    public void setNumber_of_balconies(int number_of_balconies) {
-        this.number_of_balconies = number_of_balconies;
+    public void setScreen_type(String screen_type) {
+        this.screen_type = screen_type;
     }
 
     @Override
     public String toString() {
         return "Cinema{" +
-                "scene='" + scene + '\'' +
-                ", number_of_balconies=" + number_of_balconies +
+                "screen_size=" + screen_size +
+                ", screen_type='" + screen_type + '\'' +
                 '}';
     }
 }
