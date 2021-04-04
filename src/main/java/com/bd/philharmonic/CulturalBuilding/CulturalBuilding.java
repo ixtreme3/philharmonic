@@ -9,8 +9,9 @@ import javax.persistence.*;
 public class CulturalBuilding {
 
     @Id
-    @SequenceGenerator(name = "cultural_building_sequence", sequenceName = "cultural_building_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "cultural_building_sequence", sequenceName = "cultural_building_sequence", allocationSize = 10)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cultural_building_sequence")
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_place", updatable = false)
     private Long id_place;
 
