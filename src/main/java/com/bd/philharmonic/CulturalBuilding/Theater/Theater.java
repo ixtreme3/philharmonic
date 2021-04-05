@@ -10,11 +10,22 @@ import javax.persistence.Table;
 @Table(name = "theater")
 public class Theater extends CulturalBuilding {
 
-    @Column(name = "scene", nullable = false)
+    @Column(name = "scene")
     private String scene;
 
-    @Column(name = "number_of_balconies", nullable = false)
+    @Column(name = "number_of_balconies")
     private int number_of_balconies;
+
+
+    public Theater(String name, String type_of_building, String address, int capacity, String scene, int number_of_balconies) {
+        super(name, type_of_building, address, capacity);
+        this.scene = scene;
+        this.number_of_balconies = number_of_balconies;
+    }
+
+    public Theater() {
+
+    }
 
     public String getScene() {
         return scene;

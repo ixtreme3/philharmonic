@@ -10,12 +10,21 @@ import javax.persistence.Table;
 @Table(name = "cinema")
 public class Cinema extends CulturalBuilding {
 
-    @Column(name = "screen_size", nullable = false)
+    @Column(name = "screen_size")
     private int screen_size;
 
     @Column(name = "screen_type", nullable = false)
     private String screen_type;
 
+    public Cinema(String name, String type_of_building, String address, int capacity, int screen_size, String screen_type) {
+        super(name, type_of_building, address, capacity);
+        this.screen_size = screen_size;
+        this.screen_type = screen_type;
+    }
+
+    public Cinema() {
+
+    }
 
     public int getScreen_size() {
         return screen_size;

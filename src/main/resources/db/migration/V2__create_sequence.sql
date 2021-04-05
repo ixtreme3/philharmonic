@@ -1,5 +1,5 @@
 
-create sequence cultural_building_sequence start 7 increment 10;
+CREATE SEQUENCE cultural_building_sequence START 7 INCREMENT 50;
 
 
 -- create table cinema (

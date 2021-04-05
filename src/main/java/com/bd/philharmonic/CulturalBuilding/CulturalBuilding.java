@@ -9,24 +9,33 @@ import javax.persistence.*;
 public class CulturalBuilding {
 
     @Id
-    @SequenceGenerator(name = "cultural_building_sequence", sequenceName = "cultural_building_sequence", allocationSize = 10)
+    @SequenceGenerator(name = "cultural_building_sequence", sequenceName = "cultural_building_sequence", initialValue = 7)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cultural_building_sequence")
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_place", updatable = false)
+    @Column(name = "id_place")
     private Long id_place;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "type_of_building", nullable = false)
+    @Column(name = "type_of_building")
     private String type_of_building;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "capacity", nullable = false)
+    @Column(name = "capacity")
     private int capacity;
 
+    public CulturalBuilding(String name, String type_of_building, String address, int capacity) {
+        this.name = name;
+        this.type_of_building = type_of_building;
+        this.address = address;
+        this.capacity = capacity;
+    }
+
+    public CulturalBuilding() {
+
+    }
 
     public Long getId_place() {
         return id_place;
