@@ -1,9 +1,7 @@
 package com.bd.philharmonic;
 
-import com.bd.philharmonic.CulturalBuilding.Cinema.Cinema;
-import com.bd.philharmonic.CulturalBuilding.Cinema.CinemaRepository;
-import com.bd.philharmonic.CulturalBuilding.CulturalBuilding;
-import com.bd.philharmonic.CulturalBuilding.CulturalBuildingRepository;
+import com.bd.philharmonic.CulturalBuilding.HouseOfCulture.HouseOfCulture;
+import com.bd.philharmonic.CulturalBuilding.HouseOfCulture.HouseOfCultureRepository;
 import com.bd.philharmonic.CulturalBuilding.Theater.Theater;
 import com.bd.philharmonic.CulturalBuilding.Theater.TheaterRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -19,7 +17,7 @@ public class Philharmonic {
     }
 
     @Bean
-    public CommandLineRunner loadData(TheaterRepository theaterRepository, CinemaRepository cinemaRepository) {
+    public CommandLineRunner loadData(TheaterRepository theaterRepository, HouseOfCultureRepository houseOfCultureRepository) {
         return (args) -> {
 
             // create
@@ -33,19 +31,17 @@ public class Philharmonic {
             );
             theaterRepository.save(theater);
 
-            Cinema cinema = new Cinema("Киносити",
-                    "Кинотеатр",
-                    "ул. Фрунзе, 238",
-                    275,
-                    27,
-                    "3D"
-            );
-            cinemaRepository.save(cinema);
+            HouseOfCulture houseOfCulture = new HouseOfCulture("Областной Дом Народного Творчества",
+                    "Дом культуры",
+                    "Каинская, 5",
+                    45,
+                    "Дом народного творчества");
+            houseOfCultureRepository.save(houseOfCulture);
 
             // delete (by id)
             // Такая запись приведет к удалению строчек из обеих таблиц (как из дочерней так и из родительской) :
             theaterRepository.deleteById(1L);
-            cinemaRepository.deleteById(4L);
+            houseOfCultureRepository.deleteById(4L);
 
             // update (by id)
             Theater updateTheater = theaterRepository.findById(3L).orElseThrow(() -> new IllegalStateException("Theater with id " + 3L + " not found"));

@@ -8,11 +8,10 @@ CREATE TABLE cultural_building
     CONSTRAINT PK_cultural_buildings PRIMARY KEY ( id_place )
 );
 
-CREATE TABLE cinema
+CREATE TABLE house_of_culture
 (
     id_place    bigint NOT NULL,
-    screen_size integer NOT NULL,
-    screen_type text NOT NULL,
+    type text NOT NULL,
     CONSTRAINT PK_cinemas PRIMARY KEY ( id_place ),
     CONSTRAINT FK_24 FOREIGN KEY ( id_place ) REFERENCES cultural_building ( id_place )
 );
