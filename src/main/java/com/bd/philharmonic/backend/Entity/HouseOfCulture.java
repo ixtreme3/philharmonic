@@ -1,6 +1,4 @@
-package com.bd.philharmonic.CulturalBuilding.HouseOfCulture;
-
-import com.bd.philharmonic.CulturalBuilding.CulturalBuilding;
+package com.bd.philharmonic.backend.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

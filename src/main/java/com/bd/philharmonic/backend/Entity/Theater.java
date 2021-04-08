@@ -1,8 +1,5 @@
-package com.bd.philharmonic.CulturalBuilding.Theater;
+package com.bd.philharmonic.backend.Entity;
 
-import com.bd.philharmonic.CulturalBuilding.CulturalBuilding;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -10,12 +7,9 @@ import javax.persistence.Table;
 @Table(name = "theater")
 public class Theater extends CulturalBuilding {
 
-    @Column(name = "scene")
     private String scene;
 
-    @Column(name = "number_of_balconies")
     private int number_of_balconies;
-
 
     public Theater(String name, String type_of_building, String address, int capacity, String scene, int number_of_balconies) {
         super(name, type_of_building, address, capacity);

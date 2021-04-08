@@ -1,6 +1,6 @@
-package com.bd.philharmonic.CulturalBuilding;
+package com.bd.philharmonic.backend.Repository;
 
-import org.springframework.data.jpa.repository.Query;
+import com.bd.philharmonic.backend.Entity.CulturalBuilding;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

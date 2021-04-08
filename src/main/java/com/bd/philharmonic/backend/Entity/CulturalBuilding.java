@@ -1,4 +1,4 @@
-package com.bd.philharmonic.CulturalBuilding;
+package com.bd.philharmonic.backend.Entity;
 
 import javax.persistence.*;
 
@@ -11,19 +11,14 @@ public class CulturalBuilding {
     @Id
     @SequenceGenerator(name = "cultural_building_sequence", sequenceName = "cultural_building_sequence", initialValue = 7)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cultural_building_sequence")
-    @Column(name = "id_place")
     private Long id_place;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "type_of_building")
-    private String type_of_building;
+    private String type_of_building; // ?
 
-    @Column(name = "address")
     private String address;
 
-    @Column(name = "capacity")
     private int capacity;
 
     public CulturalBuilding(String name, String type_of_building, String address, int capacity) {
