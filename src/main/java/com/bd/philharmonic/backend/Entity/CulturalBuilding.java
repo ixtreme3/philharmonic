@@ -15,15 +15,12 @@ public class CulturalBuilding {
 
     private String name;
 
-    private String type_of_building; // ?
-
     private String address;
 
     private int capacity;
 
-    public CulturalBuilding(String name, String type_of_building, String address, int capacity) {
+    public CulturalBuilding(String name, String address, int capacity) {
         this.name = name;
-        this.type_of_building = type_of_building;
         this.address = address;
         this.capacity = capacity;
     }
@@ -48,14 +45,6 @@ public class CulturalBuilding {
         this.name = name;
     }
 
-    public String getType_of_building() {
-        return type_of_building;
-    }
-
-    public void setType_of_building(String type_of_building) {
-        this.type_of_building = type_of_building;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -77,7 +66,6 @@ public class CulturalBuilding {
         return "CulturalBuilding{" +
                 "id_place=" + id_place +
                 ", name='" + name + '\'' +
-                ", type_of_building='" + type_of_building + '\'' +
                 ", address='" + address + '\'' +
                 ", capacity=" + capacity +
                 '}';

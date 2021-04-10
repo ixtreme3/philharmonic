@@ -2,7 +2,6 @@ CREATE TABLE cultural_building
 (
     id_place         bigint NOT NULL,
     name             text NOT NULL,
-    type_of_building text NOT NULL,
     address          text NOT NULL,
     capacity         integer NOT NULL,
     CONSTRAINT PK_cultural_buildings PRIMARY KEY ( id_place )

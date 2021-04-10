@@ -9,8 +9,8 @@ public class HouseOfCulture extends CulturalBuilding {
 
     private String type;
 
-    public HouseOfCulture(String name, String type_of_building, String address, int capacity, String type) {
-        super(name, type_of_building, address, capacity);
+    public HouseOfCulture(String name, String address, int capacity, String type) {
+        super(name, address, capacity);
         this.type = type;
     }
 

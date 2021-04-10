@@ -11,8 +11,8 @@ public class Theater extends CulturalBuilding {
 
     private int number_of_balconies;
 
-    public Theater(String name, String type_of_building, String address, int capacity, String scene, int number_of_balconies) {
-        super(name, type_of_building, address, capacity);
+    public Theater(String name, String address, int capacity, String scene, int number_of_balconies) {
+        super(name, address, capacity);
         this.scene = scene;
         this.number_of_balconies = number_of_balconies;
     }

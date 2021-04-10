@@ -27,4 +27,16 @@ public class TheaterService {
         }
     }
 
+    public void save(Theater theater) {
+        if (theater == null){
+            return;
+        }
+        theaterRepository.save(theater);
+    }
+
+    public void delete(Theater theater) {
+        theaterRepository.delete(theater);
+    }
+
+
 }
