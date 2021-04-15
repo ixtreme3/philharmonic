@@ -1,4 +1,4 @@
-package com.bd.philharmonic.backend.Entity;
+package com.bd.philharmonic.Backend.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

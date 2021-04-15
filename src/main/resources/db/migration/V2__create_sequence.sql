@@ -1,1 +1,3 @@
 CREATE SEQUENCE cultural_building_sequence START 7 INCREMENT 50;
+
+CREATE SEQUENCE event_sequence START 1 INCREMENT 50;

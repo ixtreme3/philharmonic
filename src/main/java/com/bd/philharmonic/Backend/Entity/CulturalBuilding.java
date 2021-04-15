@@ -1,6 +1,8 @@
-package com.bd.philharmonic.backend.Entity;
+package com.bd.philharmonic.Backend.Entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -18,6 +20,10 @@ public class CulturalBuilding {
     private String address;
 
     private int capacity;
+
+    @ManyToMany(mappedBy = "culturalBuildings")
+    private Set<Event> events = new HashSet<>();
+
 
     public CulturalBuilding(String name, String address, int capacity) {
         this.name = name;

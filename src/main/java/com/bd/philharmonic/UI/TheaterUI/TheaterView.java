@@ -1,8 +1,9 @@
-package com.bd.philharmonic.ui;
+package com.bd.philharmonic.UI.TheaterUI;
 
-import com.bd.philharmonic.backend.Entity.Theater;
-import com.bd.philharmonic.backend.Service.TheaterService;
-import com.bd.philharmonic.ui.TheaterUI.TheaterForm;
+import com.bd.philharmonic.Backend.Entity.Theater;
+import com.bd.philharmonic.Backend.Service.TheaterService;
+import com.bd.philharmonic.UI.MainLayout;
+import com.bd.philharmonic.UI.TheaterUI.TheaterForm;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
@@ -11,11 +12,12 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@Route
-@CssImport("./styles/shared-styles.css")
-public class MainView extends VerticalLayout {
+@Route(value = "/theaters", layout = MainLayout.class)
+@PageTitle("Theaters | Vaadin CRM")
+public class TheaterView extends VerticalLayout {
 
     private final TheaterService theaterService;
 
@@ -25,9 +27,9 @@ public class MainView extends VerticalLayout {
 
     private final TheaterForm theaterForm;
 
-    public MainView(TheaterService theaterService) {
+    public TheaterView(TheaterService theaterService) {
         this.theaterService = theaterService;
-        addClassName("list-view");
+        addClassName("theater-view");
         this.grid = new Grid<>(Theater.class);
 
         configureGrid();

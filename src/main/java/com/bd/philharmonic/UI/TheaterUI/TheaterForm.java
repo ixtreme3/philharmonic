@@ -1,6 +1,6 @@
-package com.bd.philharmonic.ui.TheaterUI;
+package com.bd.philharmonic.UI.TheaterUI;
 
-import com.bd.philharmonic.backend.Entity.Theater;
+import com.bd.philharmonic.Backend.Entity.Theater;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -8,38 +8,28 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.converter.StringToIntegerConverter;
 import com.vaadin.flow.shared.Registration;
 
 public class TheaterForm extends FormLayout {
 
     TextField name = new TextField("Name");
     TextField address = new TextField("Address");
-    TextField capacity = new TextField("Capacity");
+    IntegerField capacity = new IntegerField ("Capacity");
+
     TextField scene = new TextField("Scene");
-    TextField number_of_balconies = new TextField("Number of balconies");
+    IntegerField number_of_balconies = new IntegerField("Number of balconies");
 
     Button save = new Button("Save");
     Button delete = new Button("Delete");
     Button close = new Button("Cancel");
 
-    Binder<Theater> binder = new BeanValidationBinder<>(Theater.class);
+    Binder<Theater> binder = new Binder<>(Theater.class);
 
     public TheaterForm() {
         addClassName("theater-form");
-
-        binder.forField(this.capacity)
-                .withNullRepresentation("")
-                .withConverter(new StringToIntegerConverter("Integers only" ))
-                .bind(Theater::getCapacity, Theater::setCapacity);
-
-        binder.forField(this.number_of_balconies)
-                .withNullRepresentation("")
-                .withConverter(new StringToIntegerConverter("Integers only" ))
-                .bind(Theater::getNumber_of_balconies, Theater::setNumber_of_balconies);
 
         binder.bindInstanceFields(this);
 
@@ -79,7 +69,7 @@ public class TheaterForm extends FormLayout {
 
     // Events
     public static abstract class TheaterFormEvent extends ComponentEvent<TheaterForm> {
-        private Theater theater;
+        private final Theater theater;
 
         protected TheaterFormEvent(TheaterForm source, Theater theater) {
             super(source, false);

@@ -1,6 +1,6 @@
-package com.bd.philharmonic.backend.Repository;
+package com.bd.philharmonic.Backend.Repository;
 
-import com.bd.philharmonic.backend.Entity.CulturalBuilding;
+import com.bd.philharmonic.Backend.Entity.CulturalBuilding;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

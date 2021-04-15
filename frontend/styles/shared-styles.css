@@ -1,20 +1,57 @@
-/* List view */
-.list-view .content {
+/* Main layout */
+a[highlight] {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.header {
+  padding: 0 var(--lumo-space-m);
+}
+
+.header h1.logo {
+  font-size: 1em;
+  margin: var(--lumo-space-m);
+}
+
+
+/* Theater view */
+.theater-view .content {
   display: flex;
 }
 
-.list-view .theater-grid {
+.theater-view .theater-grid {
   flex: 3;
 }
 
-.list-view .theater-form {
+.theater-view .theater-form {
   flex: 1;
   padding: var(--lumo-space-m);
 }
 
 @media all and (max-width: 1100px) {
-  .list-view.editing .toolbar,
-  .list-view.editing .theater-grid {
+  .theater-view.editing .toolbar,
+  .theater-view.editing .theater-grid {
+    display: none;
+  }
+}
+
+/* House of culture view */
+.house_of_culture-view .content {
+  display: flex;
+}
+
+.house_of_culture-view .house_of_culture-grid {
+  flex: 3;
+}
+
+.house_of_culture-view .house_of_culture-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .house_of_culture-view.editing .toolbar,
+  .house_of_culture-view.editing .house_of_culture-grid {
     display: none;
   }
 }

@@ -1,6 +1,6 @@
-package com.bd.philharmonic.backend.Repository;
+package com.bd.philharmonic.Backend.Repository;
 
-import com.bd.philharmonic.backend.Entity.Theater;
+import com.bd.philharmonic.Backend.Entity.Theater;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
