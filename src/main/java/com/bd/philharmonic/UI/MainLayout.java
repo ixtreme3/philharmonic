@@ -1,6 +1,7 @@
 package com.bd.philharmonic.UI;
 
 import com.bd.philharmonic.UI.HouseOfCultureUI.HouseOfCultureView;
+import com.bd.philharmonic.UI.Queries.Q_1;
 import com.bd.philharmonic.UI.TheaterUI.TheaterView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -20,7 +21,6 @@ public class MainLayout extends AppLayout {
     public MainLayout() {
         createHeader();
         createDrawer();
-
     }
 
     private void createHeader() {
@@ -42,9 +42,13 @@ public class MainLayout extends AppLayout {
         RouterLink housesOfCultureLink = new RouterLink("Houses of culture", HouseOfCultureView.class);
         theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
+        RouterLink query1Link = new RouterLink("Query №1", Q_1.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
         addToDrawer(new VerticalLayout(
             theatersLink,
-            housesOfCultureLink
+            housesOfCultureLink,
+            query1Link
         ));
     }
 

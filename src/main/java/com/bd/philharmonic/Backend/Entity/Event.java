@@ -11,6 +11,7 @@ public class Event {
 
     @Id
     @SequenceGenerator(name = "event_sequence", sequenceName = "event_sequence", initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cultural_building_sequence")
     private Long id_event;
 
     private String event_type;

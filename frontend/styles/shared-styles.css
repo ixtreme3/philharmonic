@@ -55,3 +55,24 @@ a[highlight] {
     display: none;
   }
 }
+
+/* Query view */
+.query-view .content {
+  display: flex;
+}
+
+.query-view .query-grid {
+  flex: 4;
+}
+
+.query-view .form-layout {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .house_of_culture-view.editing .toolbar,
+  .house_of_culture-view.editing .query-grid {
+    display: none;
+  }
+}
