@@ -1,17 +1,12 @@
 package com.bd.philharmonic.UI.Queries;
 
-import com.bd.philharmonic.Backend.Entity.CulturalBuilding;
 import com.bd.philharmonic.Backend.Entity.HouseOfCulture;
 import com.bd.philharmonic.Backend.Entity.Theater;
-import com.bd.philharmonic.Backend.Service.CulturalBuildingService;
+import com.bd.philharmonic.Backend.Service.HouseOfCultureService;
+import com.bd.philharmonic.Backend.Service.TheaterService;
 import com.bd.philharmonic.UI.MainLayout;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.details.Details;
-import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -20,78 +15,93 @@ import com.vaadin.flow.router.Route;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Route(value = "/queries/1", layout = MainLayout.class)
 @PageTitle("Query №1 | Vaadin CRM")
 public class Q_1 extends VerticalLayout {
 
-    private final CulturalBuildingService culturalBuildingService;
+    private final TheaterService theaterService;
 
-    private Grid<CulturalBuilding> grid = null;
+    private final HouseOfCultureService houseOfCultureService;
 
-    FormLayout details = new FormLayout();
+    private final TextField fieldTypeOfBuilding = new TextField();
 
-    private final TextField filterText = new TextField();
+    private final TextField fieldCapacity = new TextField();
 
+    public Q_1(TheaterService theaterService, HouseOfCultureService houseOfCultureService) {
+        this.theaterService = theaterService;
+        this.houseOfCultureService = houseOfCultureService;
+        setSizeFull();
+        addClassName("query_1_view");
 
-    public Q_1(CulturalBuildingService culturalBuildingService) {
-        this.culturalBuildingService = culturalBuildingService;
-        addClassName("query-view");
-        this.grid = new Grid<>(CulturalBuilding.class);
-        configureGrid();
-
-        details.addClassName("form-layout");
-
-        Div content = new Div(grid, details);
-        content.addClassName("content");
-        content.setSizeFull();
-
-        add(getToolBar(), content);
+        Grid<Object> grid = new Grid<>();
+        add(getToolBar(), grid);
     }
 
     private HorizontalLayout getToolBar() {
-        filterText.setPlaceholder("Enter type of building...");
-        filterText.setClearButtonVisible(true);
-        Button addTheaterButton = new Button("Query", click -> listBuildings(filterText.getValue()));
-        HorizontalLayout toolbar = new HorizontalLayout(filterText, addTheaterButton);
+        fieldTypeOfBuilding.setPlaceholder("Enter type of building...");
+        fieldTypeOfBuilding.setClearButtonVisible(true);
+
+        fieldCapacity.setPlaceholder("Enter minimum capacity...");
+        fieldCapacity.setClearButtonVisible(true);
+
+        Button queryButton = new Button("Query", click -> createAndSetProperGrid(fieldTypeOfBuilding.getValue(), fieldCapacity.getValue()));
+        HorizontalLayout toolbar = new HorizontalLayout(fieldTypeOfBuilding, fieldCapacity, queryButton);
         toolbar.addClassName("toolbar");
         return toolbar;
     }
 
-    private void configureGrid() {
+    private void createAndSetProperGrid(String type, String count_str) {
+        if (!count_str.isEmpty() && (type.equals("Театр") || type.equals("театр"))) {
+            int count = Integer.parseInt(count_str);
+            Grid<Theater> grid = new Grid<>(Theater.class);
+            configureTheaterGrid(grid);
+            grid.setItems(theaterService.getTheaterByCapacityGreaterThanEqual(count));
+            replace(getComponentAt(1), grid);
+        } else if (type.equals("Театр") || type.equals("театр")) {
+            Grid<Theater> newGrid = new Grid<>(Theater.class);
+            configureTheaterGrid(newGrid);
+            setTheaterGrid(type, newGrid);
+            replace(getComponentAt(1), newGrid);
+        }
+
+        if (!count_str.isEmpty() && (type.equals("Дом культуры") || type.equals("дом культуры"))) {
+            int count = Integer.parseInt(count_str);
+            Grid<HouseOfCulture> grid = new Grid<>(HouseOfCulture.class);
+            configureHouseOfCultureGrid(grid);
+            grid.setItems(houseOfCultureService.getHouseOfCultureByCapacityGreaterThanEqual(count));
+            replace(getComponentAt(1), grid);
+        } else if (type.equals("Дом культуры") || type.equals("дом культуры")) {
+            Grid<HouseOfCulture> grid = new Grid<>(HouseOfCulture.class);
+            configureHouseOfCultureGrid(grid);
+            setHouseOfCultureGrid(type, grid);
+            replace(getComponentAt(1), grid);
+        }
+    }
+
+    private void configureTheaterGrid(Grid<Theater> grid) {
         grid.addClassName("query-grid");
-        setSizeFull();
-        grid.setColumns("name", "address", "capacity");
+        grid.setColumns("name", "address", "capacity", "scene", "number_of_balconies");
+        grid.getColumnByKey("number_of_balconies").setHeader("Number of balconies");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
-
-        grid.asSingleSelect().addValueChangeListener(evt -> showBuildingDetails(evt.getValue()));
+        grid.setSizeFull();
     }
 
-    private void showBuildingDetails(CulturalBuilding building){
-        details.removeAll();
-        if (building instanceof Theater) {
-            details.add(
-                    new H3("Сцена"),
-                    new Text(((Theater) building).getScene()),
-                    new H3("Количество балконов"),
-                    new Text(String.valueOf(((Theater) building).getNumber_of_balconies()))
-            );
-        }
-        if (building instanceof HouseOfCulture) {
-            details.add(
-                    new H3("Тип"),
-                    new Text(((HouseOfCulture) building).getType())
-            );
-        }
+    private void configureHouseOfCultureGrid(Grid<HouseOfCulture> grid) {
+        grid.addClassName("query-grid");
+        grid.setColumns("name", "address", "capacity", "type");
+        grid.getColumns().forEach(col -> col.setAutoWidth(true));
+        grid.setSizeFull();
     }
 
-    private void listBuildings(String type) {
-        List<CulturalBuilding> buildingsOfType = culturalBuildingService.getBuildingsOfType(type);
-        if (buildingsOfType == null) {
-            grid.setItems(Collections.emptyList());
-        } else {
-            grid.setItems(culturalBuildingService.getBuildingsOfType(type));
-        }
+    private void setTheaterGrid(String type, Grid<Theater> grid) {
+        List<Theater> theaters = (List<Theater>) theaterService.findAll();
+        grid.setItems(Objects.requireNonNullElse(theaters, Collections.emptyList()));
     }
 
+    private void setHouseOfCultureGrid(String type, Grid<HouseOfCulture> grid) {
+        List<HouseOfCulture> housesOfCulture = (List<HouseOfCulture>) houseOfCultureService.findAll();
+        grid.setItems(Objects.requireNonNullElse(housesOfCulture, Collections.emptyList()));
+    }
 }

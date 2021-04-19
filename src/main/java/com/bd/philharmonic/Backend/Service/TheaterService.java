@@ -1,11 +1,11 @@
 package com.bd.philharmonic.Backend.Service;
 
 import com.bd.philharmonic.Backend.Entity.Theater;
-import com.bd.philharmonic.Backend.Repository.HouseOfCultureRepository;
 import com.bd.philharmonic.Backend.Repository.TheaterRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class TheaterService {
@@ -16,13 +16,17 @@ public class TheaterService {
         this.theaterRepository = theaterRepository;
     }
 
-    public Collection<Theater> findAll() {
-        return (Collection<Theater>) theaterRepository.findAll();
+    public List<Theater> findAll() {
+        return theaterRepository.findAll();
     }
 
-    public Collection<Theater> findAll(String filterText) {
+    public List<Theater> getTheaterByCapacityGreaterThanEqual(int param) {
+        return theaterRepository.getTheaterByCapacityGreaterThanEqual(param);
+    }
+
+    public List<Theater> findAll(String filterText) {
         if (filterText == null || filterText.isEmpty()) {
-            return (Collection<Theater>) theaterRepository.findAll();
+            return theaterRepository.findAll();
         } else {
             return theaterRepository.search(filterText);
         }
@@ -38,6 +42,5 @@ public class TheaterService {
     public void delete(Theater theater) {
         theaterRepository.delete(theater);
     }
-
 
 }

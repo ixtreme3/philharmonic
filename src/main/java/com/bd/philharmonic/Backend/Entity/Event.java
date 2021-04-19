@@ -14,11 +14,9 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cultural_building_sequence")
     private Long id_event;
 
-    private String event_type;
-
     private String name;
 
-    private int visit_prise; // keep or delete?
+    private int visit_price;
 
     private LocalDate start_date;
 
@@ -44,14 +42,6 @@ public class Event {
         this.id_event = id_event;
     }
 
-    public String getEvent_type() {
-        return event_type;
-    }
-
-    public void setEvent_type(String event_type) {
-        this.event_type = event_type;
-    }
-
     public String getName() {
         return name;
     }
@@ -60,12 +50,12 @@ public class Event {
         this.name = name;
     }
 
-    public int getVisit_prise() {
-        return visit_prise;
+    public int getVisit_price() {
+        return visit_price;
     }
 
-    public void setVisit_prise(int visit_prise) {
-        this.visit_prise = visit_prise;
+    public void setVisit_price(int visit_price) {
+        this.visit_price = visit_price;
     }
 
     public LocalDate getStart_date() {
@@ -89,7 +79,7 @@ public class Event {
         return "Events{" +
                 "id_event=" + id_event +
                 ", name='" + name + '\'' +
-                ", visit_prise=" + visit_prise +
+                ", visit_prise=" + visit_price +
                 ", start_date=" + start_date +
                 ", end_date=" + end_date +
                 '}';

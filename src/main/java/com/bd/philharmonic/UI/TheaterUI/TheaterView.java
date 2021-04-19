@@ -29,20 +29,17 @@ public class TheaterView extends VerticalLayout {
 
     public TheaterView(TheaterService theaterService) {
         this.theaterService = theaterService;
-        addClassName("theater-view");
         this.grid = new Grid<>(Theater.class);
-
+        addClassName("theater-view");
+        setSizeFull();
         configureGrid();
-
         theaterForm = new TheaterForm();
         theaterForm.addListener(TheaterForm.SaveEvent.class, this::saveTheater);
         theaterForm.addListener(TheaterForm.DeleteEvent.class, this:: deleteTheater);
         theaterForm.addListener(TheaterForm.CloseEvent.class, e -> closeEditor());
-
         Div content = new Div(grid, theaterForm);
         content.addClassName("content");
         content.setSizeFull();
-
         add(getToolBar(), content);
         listTheaters();
         closeEditor();
@@ -82,12 +79,11 @@ public class TheaterView extends VerticalLayout {
 
     private void configureGrid() {
         grid.addClassName("theater-grid");
-        setSizeFull();
         grid.setColumns("name", "address", "capacity", "scene", "number_of_balconies");
         grid.getColumnByKey("number_of_balconies").setHeader("Number of balconies");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
-
         grid.asSingleSelect().addValueChangeListener(evt -> editTheater(evt.getValue()));
+        grid.setSizeFull();
     }
 
     private void editTheater(Theater theater) {

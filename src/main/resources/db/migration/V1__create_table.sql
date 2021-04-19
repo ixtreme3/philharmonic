@@ -27,9 +27,8 @@ CREATE TABLE theater
 CREATE TABLE event
 (
     id_event      bigint NOT NULL,
-    event_type    text NOT NULL,
     name          text NOT NULL,
-    visit_prise   integer NOT NULL,
+    visit_price   integer NOT NULL,
     start_date    date NOT NULL,
     end_date      date NOT NULL,
     CONSTRAINT PK_event PRIMARY KEY ( id_event )

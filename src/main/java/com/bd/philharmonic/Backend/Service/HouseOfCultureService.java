@@ -5,6 +5,7 @@ import com.bd.philharmonic.Backend.Repository.HouseOfCultureRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class HouseOfCultureService {
@@ -18,6 +19,10 @@ public class HouseOfCultureService {
 
     public Collection<HouseOfCulture> findAll() {
         return (Collection<HouseOfCulture>) houseOfCultureRepository.findAll();
+    }
+
+    public List<HouseOfCulture> getHouseOfCultureByCapacityGreaterThanEqual(int param) {
+        return houseOfCultureRepository.getHouseOfCultureByCapacityGreaterThanEqual(param);
     }
 
     public Collection<HouseOfCulture> findAll(String filterText) {

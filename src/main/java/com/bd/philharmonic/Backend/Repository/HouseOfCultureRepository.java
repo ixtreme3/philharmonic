@@ -8,13 +8,17 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.List;
 
 @Repository
 public interface HouseOfCultureRepository extends CrudRepository<HouseOfCulture, Long> {
 
     @Query("select t from HouseOfCulture t " +
             "where lower(t.name) like lower(concat('%', :searchTerm, '%'))")
-    Collection<HouseOfCulture> search(@Param("searchTerm") String searchTerm);
+    List<HouseOfCulture> search(@Param("searchTerm") String searchTerm);
+
+    @Query
+    List<HouseOfCulture> getHouseOfCultureByCapacityGreaterThanEqual(int param);
 
 
 }

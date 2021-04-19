@@ -27,20 +27,17 @@ public class HouseOfCultureView extends VerticalLayout {
 
     public HouseOfCultureView(HouseOfCultureService houseOfCultureService) {
         this.houseOfCultureService = houseOfCultureService;
-        addClassName("house_of_culture-view");
         this.grid = new Grid<>(HouseOfCulture.class);
-
-        configureGrid();
-
+        addClassName("house_of_culture-view");
+        setSizeFull();
         houseOfCultureForm = new HouseOfCultureForm();
         houseOfCultureForm.addListener(HouseOfCultureForm.SaveEvent.class, this::saveHouseOfCulture);
         houseOfCultureForm.addListener(HouseOfCultureForm.DeleteEvent.class, this:: deleteHouseOfCulture);
         houseOfCultureForm.addListener(HouseOfCultureForm.CloseEvent.class, e -> closeEditor());
-
+        configureGrid();
         Div content = new Div(grid, houseOfCultureForm);
         content.addClassName("content");
         content.setSizeFull();
-
         add(getToolBar(), content);
         listHousesOfCulture();
         closeEditor();
@@ -80,13 +77,10 @@ public class HouseOfCultureView extends VerticalLayout {
 
     private void configureGrid() {
         grid.addClassName("house_of_culture-grid");
-        setSizeFull();
         grid.setColumns("name", "address", "capacity", "type");
-//        grid.setColumns("name", "address", "capacity", "scene", "number_of_balconies");
-//        grid.getColumnByKey("number_of_balconies").setHeader("Number of balconies");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
-
         grid.asSingleSelect().addValueChangeListener(evt -> editHouseOfCulture(evt.getValue()));
+        grid.setSizeFull();
     }
 
     private void editHouseOfCulture(HouseOfCulture houseOfCulture) {
