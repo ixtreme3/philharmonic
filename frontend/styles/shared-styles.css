@@ -13,7 +13,6 @@ a[highlight] {
   margin: var(--lumo-space-m);
 }
 
-
 /* Theater view */
 .theater-view .content {
   display: flex;
@@ -52,6 +51,69 @@ a[highlight] {
 @media all and (max-width: 1100px) {
   .house_of_culture-view.editing .toolbar,
   .house_of_culture-view.editing .house_of_culture-grid {
+    display: none;
+  }
+}
+
+/* Organizers view */
+.organizer-view .content {
+  display: flex;
+}
+
+.organizer-view .organizer-grid {
+  flex: 4;
+}
+
+.organizer-view .organizer-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .organizer-view.editing .toolbar,
+  .organizer-view.editing .organizer-grid {
+    display: none;
+  }
+}
+
+/* Impresario view */
+.impresario-view .content {
+  display: flex;
+}
+
+.impresario-view .impresario-grid {
+  flex: 4;
+}
+
+.impresario-view .impresario-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .impresario-view.editing .toolbar,
+  .impresario-view.editing .impresario-grid {
+    display: none;
+  }
+}
+
+/* Genre view */
+.genre-view .content {
+  display: flex;
+}
+
+.genre-view .genre-grid {
+  flex: 4;
+}
+
+.genre-view .genre-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .genre-view.editing .toolbar,
+  .genre-view.editing .genre-grid {
     display: none;
   }
 }

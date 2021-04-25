@@ -20,5 +20,4 @@ public interface HouseOfCultureRepository extends CrudRepository<HouseOfCulture,
     @Query
     List<HouseOfCulture> getHouseOfCultureByCapacityGreaterThanEqual(int param);
 
-
 }

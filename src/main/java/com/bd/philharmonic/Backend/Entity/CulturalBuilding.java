@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "cultural_building")
@@ -23,7 +22,6 @@ public class CulturalBuilding {
 
     @ManyToMany(mappedBy = "culturalBuildings")
     private final Set<Event> events = new HashSet<>();
-
 
     public CulturalBuilding(String name, String address, int capacity) {
         this.name = name;

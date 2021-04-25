@@ -24,3 +24,14 @@ INSERT INTO event_building (id_event, id_place) VALUES (2, 3);
 INSERT INTO event_building (id_event, id_place) VALUES (3, 2);
 INSERT INTO event_building (id_event, id_place) VALUES (4, 2);
 INSERT INTO event_building (id_event, id_place) VALUES (5, 2);
+
+INSERT INTO organizer (id_organizer, full_name, gender) VALUES (1, 'Александров Роман Егорович', 'Мужчина');
+INSERT INTO organizer (id_organizer, full_name, gender) VALUES (2, 'Баженова Ксения Антоновна', 'Женщина');
+INSERT INTO organizer (id_organizer, full_name, gender) VALUES (3, 'Басов Виктор Вадимович', 'Мужчина');
+INSERT INTO organizer (id_organizer, full_name, gender) VALUES (4, 'Леонов Александр Макарович', 'Мужчина');
+INSERT INTO organizer (id_organizer, full_name, gender) VALUES (5, 'Горшков Владимир Даниилович', 'Мужчина');
+INSERT INTO organizer (id_organizer, full_name, gender) VALUES (6, 'Семенов Иван Александрович', 'Мужчина');
+INSERT INTO organizer (id_organizer, full_name, gender) VALUES (7, 'Никольский Григорий Максимович', 'Мужчина');
+INSERT INTO organizer (id_organizer, full_name, gender) VALUES (8, 'Соколов Платон Артёмович', 'Мужчина');
+INSERT INTO organizer (id_organizer, full_name, gender) VALUES (9, 'Исаков Дмитрий Владимирович', 'Мужчина');
+INSERT INTO organizer (id_organizer, full_name, gender) VALUES (10, 'Павлов Тимофей Константинович', 'Мужчина');

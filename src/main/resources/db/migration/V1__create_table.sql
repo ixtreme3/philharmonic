@@ -43,4 +43,72 @@ CREATE TABLE event_building
     CONSTRAINT FK_37 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
 );
 
+CREATE TABLE artist
+(
+    id_artist bigint NOT NULL,
+    full_name text NOT NULL,
+    age       integer NOT NULL,
+    gender    text NOT NULL,
+    CONSTRAINT PK_artist PRIMARY KEY ( id_artist )
+);
+
+CREATE TABLE genre
+(
+    id_genre   bigint NOT NULL,
+    genre_name text NOT NULL,
+    CONSTRAINT PK_genre PRIMARY KEY ( id_genre )
+);
+
+CREATE TABLE impresario
+(
+    id_impresario bigint NOT NULL,
+    full_name     text NOT NULL,
+    age           integer NOT NULL,
+    gender        text NOT NULL,
+    CONSTRAINT PK_impresario PRIMARY KEY ( id_impresario )
+);
+
+CREATE TABLE organizer
+(
+    id_organizer bigint NOT NULL,
+    full_name    text NOT NULL,
+    gender       text NOT NULL,
+    CONSTRAINT PK_organizer PRIMARY KEY ( id_organizer )
+);
+
+CREATE TABLE artist_genre
+(
+    id_artist bigint NOT NULL,
+    id_genre  bigint NOT NULL,
+    CONSTRAINT PK_artist_genre PRIMARY KEY ( id_artist, id_genre ),
+    CONSTRAINT FK_69 FOREIGN KEY ( id_artist ) REFERENCES artist ( id_artist ),
+    CONSTRAINT FK_73 FOREIGN KEY ( id_genre ) REFERENCES genre ( id_genre )
+);
+
+CREATE TABLE artist_impresario
+(
+    id_artist     bigint NOT NULL,
+    id_impresario bigint NOT NULL,
+    CONSTRAINT PK_producing PRIMARY KEY ( id_artist, id_impresario ),
+    CONSTRAINT FK_57 FOREIGN KEY ( id_artist ) REFERENCES artist ( id_artist ),
+    CONSTRAINT FK_61 FOREIGN KEY ( id_impresario ) REFERENCES impresario ( id_impresario )
+);
+
+CREATE TABLE event_organizer
+(
+    id_organizer bigint NOT NULL,
+    id_event     bigint NOT NULL,
+    CONSTRAINT PK_organizer_event PRIMARY KEY ( id_organizer, id_event ),
+    CONSTRAINT FK_90 FOREIGN KEY ( id_organizer ) REFERENCES organizer ( id_organizer ),
+    CONSTRAINT FK_94 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
+);
+
+CREATE TABLE event_artist
+(
+    id_event  bigint NOT NULL,
+    id_artist bigint NOT NULL,
+    CONSTRAINT PK_event_artist PRIMARY KEY ( id_event, id_artist ),
+    CONSTRAINT FK_78 FOREIGN KEY ( id_event ) REFERENCES event ( id_event ),
+    CONSTRAINT FK_82 FOREIGN KEY ( id_artist ) REFERENCES artist ( id_artist )
+);
 

@@ -11,4 +11,5 @@ public class CulturalBuildingService {
     int getIdByName(String param) {
         return culturalBuildingRepository.getIdByName(param);
     };
+
 }

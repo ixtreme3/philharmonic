@@ -1,6 +1,9 @@
 package com.bd.philharmonic.UI;
 
+import com.bd.philharmonic.UI.GenreUI.GenreView;
 import com.bd.philharmonic.UI.HouseOfCultureUI.HouseOfCultureView;
+import com.bd.philharmonic.UI.ImpresarioUI.ImpresarioView;
+import com.bd.philharmonic.UI.OrganizerUI.OrganizerView;
 import com.bd.philharmonic.UI.Queries.Q_1;
 import com.bd.philharmonic.UI.Queries.Q_8;
 import com.bd.philharmonic.UI.TheaterUI.TheaterView;
@@ -43,6 +46,15 @@ public class MainLayout extends AppLayout {
         RouterLink housesOfCultureLink = new RouterLink("Houses of culture", HouseOfCultureView.class);
         theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
+        RouterLink organizersLink = new RouterLink("Events organizers", OrganizerView.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink impresarioLink = new RouterLink("Impresarios", ImpresarioView.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink genresLink = new RouterLink("Genres", GenreView.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
         RouterLink query1Link = new RouterLink("Query №1", Q_1.class);
         theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
@@ -52,6 +64,9 @@ public class MainLayout extends AppLayout {
         addToDrawer(new VerticalLayout(
             theatersLink,
             housesOfCultureLink,
+            organizersLink,
+            impresarioLink,
+            genresLink,
             query1Link,
             query8Link
         ));
