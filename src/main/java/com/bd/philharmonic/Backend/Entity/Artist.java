@@ -2,6 +2,7 @@ package com.bd.philharmonic.Backend.Entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public class Artist {
 
     private String gender;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "artist_impresario",
             joinColumns = { @JoinColumn(name = "id_artist") },
@@ -27,7 +28,7 @@ public class Artist {
     )
     Set<Impresario> impresarios = new HashSet<>();
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "artist_genre",
             joinColumns = { @JoinColumn(name = "id_artist") },
@@ -35,7 +36,7 @@ public class Artist {
     )
     Set<Genre> genres = new HashSet<>();
 
-    @ManyToMany(mappedBy = "artists")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "artists")
     private final Set<Event> events = new HashSet<>();
 
     public Long getId_artist() {
@@ -70,6 +71,14 @@ public class Artist {
         this.gender = gender;
     }
 
+    public Set<Impresario> getImpresarios() {
+        return impresarios;
+    }
+
+    public void setImpresarios(Set<Impresario> impresarios) {
+        this.impresarios = impresarios;
+    }
+
     public Set<Genre> getGenres() {
         return genres;
     }
@@ -80,6 +89,30 @@ public class Artist {
 
     public Set<Event> getEvents() {
         return events;
+    }
+
+    public String getGenres_String() {
+        StringBuilder str = new StringBuilder();
+        Iterator<Genre> genreIterator = genres.iterator();
+        while (genreIterator.hasNext()) {
+            str.append(genreIterator.next().getGenre_name());
+            if (genreIterator.hasNext()){
+                str.append(", ");
+            }
+        }
+        return str.toString();
+    }
+
+    public String getImpresarios_String() {
+        StringBuilder str = new StringBuilder();
+        Iterator<Impresario > impresarioIterator = impresarios.iterator();
+        while (impresarioIterator.hasNext()) {
+            str.append(impresarioIterator.next().getFull_name());
+            if (impresarioIterator.hasNext()){
+                str.append(", ");
+            }
+        }
+        return str.toString();
     }
 
     @Override

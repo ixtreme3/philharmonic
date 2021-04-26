@@ -3,8 +3,6 @@ package com.bd.philharmonic.Backend.Service;
 import com.bd.philharmonic.Backend.Entity.Theater;
 import com.bd.philharmonic.Backend.Repository.TheaterRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
 import java.util.List;
 
 @Service

@@ -15,7 +15,7 @@ public class Genre {
 
     private String genre_name;
 
-    @ManyToMany(mappedBy = "genres")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "genres")
     private final Set<Artist> artists = new HashSet<>();
 
     public Long getId_genre() {

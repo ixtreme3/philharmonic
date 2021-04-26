@@ -22,7 +22,7 @@ public class Event {
 
     private LocalDate end_date;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "event_building",
             joinColumns = { @JoinColumn(name = "id_event") },
@@ -30,7 +30,7 @@ public class Event {
     )
     Set<CulturalBuilding> culturalBuildings = new HashSet<>();
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "event_artist",
             joinColumns = { @JoinColumn(name = "id_event") },
@@ -38,7 +38,7 @@ public class Event {
     )
     Set<Artist> artists = new HashSet<>();
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "event_organizer",
             joinColumns = { @JoinColumn(name = "id_event") },

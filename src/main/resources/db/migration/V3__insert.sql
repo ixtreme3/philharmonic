@@ -35,3 +35,71 @@ INSERT INTO organizer (id_organizer, full_name, gender) VALUES (7, 'Николь
 INSERT INTO organizer (id_organizer, full_name, gender) VALUES (8, 'Соколов Платон Артёмович', 'Мужчина');
 INSERT INTO organizer (id_organizer, full_name, gender) VALUES (9, 'Исаков Дмитрий Владимирович', 'Мужчина');
 INSERT INTO organizer (id_organizer, full_name, gender) VALUES (10, 'Павлов Тимофей Константинович', 'Мужчина');
+
+INSERT INTO event_organizer (id_event, id_organizer) VALUES (1, 1);
+INSERT INTO event_organizer (id_event, id_organizer) VALUES (1, 2);
+INSERT INTO event_organizer (id_event, id_organizer) VALUES (2, 6);
+INSERT INTO event_organizer (id_event, id_organizer) VALUES (3, 10);
+INSERT INTO event_organizer (id_event, id_organizer) VALUES (4, 8);
+INSERT INTO event_organizer (id_event, id_organizer) VALUES (5, 4);
+
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (1, 'Сахаров Люсьен Кириллович', 20, 'Мужчина');
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (2, 'Харламов Сергей Иосифович', 25, 'Мужчина');
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (3, 'Сусоев Павел Станиславович', 30, 'Мужчина');
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (4, 'Голубкин Варлаам Максович', 36, 'Мужчина');
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (5, 'Бобров Тимур Евгеньевич', 46, 'Мужчина');
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (6, 'Новичков Вольдемар Романович', 55, 'Мужчина');
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (7, 'Анисимов Пётр Валериевич', 23, 'Мужчина');
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (8, 'Колесник Денис Вадимович', 24, 'Мужчина');
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (9, 'Сахаров Люсьен Кириллович', 43, 'Мужчина');
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (10, 'Жданов Михаил Иванович', 36, 'Мужчина');
+
+INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (1, 'Афанасьев Никита Степанович', 47, 'Мужчина');
+INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (2, 'Сазонов Даниил Павлович', 54, 'Мужчина');
+INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (3, 'Дмитриев Геннадий Георгиевич', 56, 'Мужчина');
+INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (4, 'Гущин Юрий Егорович', 60, 'Мужчина');
+INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (5, 'Крылов Евгений Иванович', 61, 'Мужчина');
+INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (6, 'Савин Константин Пётрович', 38, 'Мужчина');
+INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (7, 'Харитонов Валерий Степанович', 50, 'Мужчина');
+INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (8, 'Дроздов Максим Витальевич', 35, 'Мужчина');
+INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (9, 'Мишин Виталий Сергеевич', 27, 'Мужчина');
+INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (10, 'Логинов Владимир Валерьевич', 37, 'Мужчина');
+
+INSERT INTO genre (id_genre, genre_name) VALUES (1, 'Комедия');
+INSERT INTO genre (id_genre, genre_name) VALUES (2, 'Драма');
+INSERT INTO genre (id_genre, genre_name) VALUES (3, 'Мелодрама');
+INSERT INTO genre (id_genre, genre_name) VALUES (4, 'Трагедия');
+INSERT INTO genre (id_genre, genre_name) VALUES (5, 'Мюзикл');
+INSERT INTO genre (id_genre, genre_name) VALUES (6, 'Трагикомедия');
+INSERT INTO genre (id_genre, genre_name) VALUES (7, 'Водевиль');
+
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (1, 1);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (1, 2);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (1, 3);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (2, 10);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (3, 6);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (4, 4);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (5, 7);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (5, 9);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (6, 5);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (7, 5);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (8, 2);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (9, 8);
+INSERT INTO artist_impresario (id_artist, id_impresario) VALUES (10, 3);
+
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (1, 1);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (1, 4);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (2, 5);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (3, 6);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (3, 7);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (4, 3);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (5, 5);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (6, 2);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (7, 1);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (8, 4);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (9, 7);
+INSERT INTO artist_genre (id_artist, id_genre) VALUES (10, 3);
+
+
+
+

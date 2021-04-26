@@ -19,7 +19,7 @@ public class Impresario {
 
     private String gender;
 
-    @ManyToMany(mappedBy = "impresarios")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "impresarios")
     private final Set<Artist> artists = new HashSet<>();
 
     public Long getId_impresario() {
@@ -57,11 +57,9 @@ public class Impresario {
     @Override
     public String toString() {
         return "Impresario{" +
-                "id_impresario=" + id_impresario +
-                ", full_name='" + full_name + '\'' +
+                "full_name='" + full_name + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
-                ", artists=" + artists +
                 '}';
     }
 }

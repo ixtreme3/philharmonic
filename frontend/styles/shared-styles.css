@@ -117,3 +117,24 @@ a[highlight] {
     display: none;
   }
 }
+
+/* Genre view */
+.artist-view .content {
+  display: flex;
+}
+
+.artist-view .artist-grid {
+  flex: 4;
+}
+
+.artist-view .artist-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .artist-view.editing .toolbar,
+  .artist-view.editing .artist-grid {
+    display: none;
+  }
+}

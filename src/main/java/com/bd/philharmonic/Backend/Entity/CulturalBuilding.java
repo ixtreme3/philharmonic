@@ -20,7 +20,7 @@ public class CulturalBuilding {
 
     private int capacity;
 
-    @ManyToMany(mappedBy = "culturalBuildings")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "culturalBuildings")
     private final Set<Event> events = new HashSet<>();
 
     public CulturalBuilding(String name, String address, int capacity) {

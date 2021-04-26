@@ -18,7 +18,7 @@ public class Organizer {
 
     private String gender;
 
-    @ManyToMany(mappedBy = "organizers")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "organizers")
     private final Set<Event> events = new HashSet<>();
 
     public Long getId_organizer() {

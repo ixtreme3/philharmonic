@@ -1,5 +1,6 @@
 package com.bd.philharmonic.UI;
 
+import com.bd.philharmonic.UI.ArtistUI.ArtistView;
 import com.bd.philharmonic.UI.GenreUI.GenreView;
 import com.bd.philharmonic.UI.HouseOfCultureUI.HouseOfCultureView;
 import com.bd.philharmonic.UI.ImpresarioUI.ImpresarioView;
@@ -49,7 +50,10 @@ public class MainLayout extends AppLayout {
         RouterLink organizersLink = new RouterLink("Events organizers", OrganizerView.class);
         theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
-        RouterLink impresarioLink = new RouterLink("Impresarios", ImpresarioView.class);
+        RouterLink impresariosLink = new RouterLink("Impresarios", ImpresarioView.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink artistsLink = new RouterLink("Artists", ArtistView.class);
         theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink genresLink = new RouterLink("Genres", GenreView.class);
@@ -65,8 +69,10 @@ public class MainLayout extends AppLayout {
             theatersLink,
             housesOfCultureLink,
             organizersLink,
-            impresarioLink,
+            impresariosLink,
+            artistsLink,
             genresLink,
+
             query1Link,
             query8Link
         ));
