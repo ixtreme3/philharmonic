@@ -19,7 +19,7 @@ a[highlight] {
 }
 
 .theater-view .theater-grid {
-  flex: 4;
+  flex: 3;
 }
 
 .theater-view .theater-form {
@@ -40,7 +40,7 @@ a[highlight] {
 }
 
 .house_of_culture-view .house_of_culture-grid {
-  flex: 4;
+  flex: 3;
 }
 
 .house_of_culture-view .house_of_culture-form {
@@ -118,7 +118,7 @@ a[highlight] {
   }
 }
 
-/* Genre view */
+/* Artist view */
 .artist-view .content {
   display: flex;
 }

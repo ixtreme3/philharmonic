@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "event")
 public class Event {
 
@@ -21,6 +22,17 @@ public class Event {
     private LocalDate start_date;
 
     private LocalDate end_date;
+
+    public Event(String name, int visit_price, LocalDate start_date, LocalDate end_date) {
+        this.name = name;
+        this.visit_price = visit_price;
+        this.start_date = start_date;
+        this.end_date = end_date;
+    }
+
+    public Event() {
+
+    }
 
     @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(
@@ -45,10 +57,6 @@ public class Event {
             inverseJoinColumns = { @JoinColumn(name = "id_organizer") }
     )
     Set<Organizer> organizers = new HashSet<>();
-
-    public Event() {
-
-    }
 
     public Long getId_event() {
         return id_event;
