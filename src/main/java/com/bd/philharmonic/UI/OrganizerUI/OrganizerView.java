@@ -14,7 +14,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "/organizers", layout = MainLayout.class)
-@PageTitle("Organizers | Vaadin CRM")
+@PageTitle("Organizers")
 public class OrganizerView extends VerticalLayout {
 
     private final OrganizerService organizerService;
@@ -102,5 +102,4 @@ public class OrganizerView extends VerticalLayout {
     private void listOrganizers() {
         grid.setItems(organizerService.findAll(filterText.getValue()));
     }
-
 }

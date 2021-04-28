@@ -23,6 +23,14 @@ public class ImpresarioService {
         }
     }
 
+    public List<Impresario> getImpresariosByArtist(String param) {
+        return impresarioRepository.getImpresariosByArtist(param);
+    }
+
+    public List<Impresario> getImpresariosByGenre(String param) {
+        return impresarioRepository.getImpresariosByGenre(param);
+    }
+
     public void save(Impresario impresario) {
         if (impresario == null){
             return;

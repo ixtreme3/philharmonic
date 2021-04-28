@@ -3,6 +3,8 @@ package com.bd.philharmonic.Backend.Service;
 import com.bd.philharmonic.Backend.Entity.Artist;
 import com.bd.philharmonic.Backend.Repository.ArtistRepository;
 import org.springframework.stereotype.Service;
+
+import javax.swing.*;
 import java.util.List;
 
 @Service
@@ -20,6 +22,18 @@ public class ArtistService {
         } else {
             return artistRepository.search(filterText);
         }
+    }
+
+    public List<Artist> getArtistsByGenre(String param) {
+        return artistRepository.getArtistsByGenre(param);
+    }
+
+    public List<Artist> getArtistsByImpresario(String param) {
+        return artistRepository.getArtistsByImpresario(param);
+    }
+
+    public List<Artist> getArtistWithMoreThanOneGenre() {
+        return artistRepository.getArtistWithMoreThanOneGenre();
     }
 
     public void save(Artist artist) {

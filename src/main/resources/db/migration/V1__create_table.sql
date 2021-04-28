@@ -112,3 +112,27 @@ CREATE TABLE event_artist
     CONSTRAINT FK_82 FOREIGN KEY ( id_artist ) REFERENCES artist ( id_artist )
 );
 
+CREATE TABLE concert
+(
+    id_event   bigint NOT NULL,
+    live_music boolean NOT NULL,
+    CONSTRAINT PK_concert PRIMARY KEY ( id_event ),
+    CONSTRAINT FK_113 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
+);
+
+CREATE TABLE contest
+(
+    id_event               bigint NOT NULL,
+    number_of_participants integer NOT NULL,
+    age_category           text NOT NULL,
+    CONSTRAINT PK_contest PRIMARY KEY ( id_event ),
+    CONSTRAINT FK_110 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
+);
+
+CREATE TABLE performance
+(
+    id_event          bigint NOT NULL,
+    performance_theme text NOT NULL,
+    CONSTRAINT PK_performance PRIMARY KEY ( id_event ),
+    CONSTRAINT FK_116 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
+);

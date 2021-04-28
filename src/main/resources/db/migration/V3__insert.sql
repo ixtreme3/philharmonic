@@ -43,7 +43,7 @@ INSERT INTO event_organizer (id_event, id_organizer) VALUES (3, 10);
 INSERT INTO event_organizer (id_event, id_organizer) VALUES (4, 8);
 INSERT INTO event_organizer (id_event, id_organizer) VALUES (5, 4);
 
-INSERT INTO artist (id_artist, full_name, age, gender) VALUES (1, 'Сахаров Люсьен Кириллович', 20, 'Мужчина');
+INSERT INTO artist (id_artist, full_name, age, gender) VALUES (1, 'Лазарев Олег Олегович', 20, 'Мужчина');
 INSERT INTO artist (id_artist, full_name, age, gender) VALUES (2, 'Харламов Сергей Иосифович', 25, 'Мужчина');
 INSERT INTO artist (id_artist, full_name, age, gender) VALUES (3, 'Сусоев Павел Станиславович', 30, 'Мужчина');
 INSERT INTO artist (id_artist, full_name, age, gender) VALUES (4, 'Голубкин Варлаам Максович', 36, 'Мужчина');

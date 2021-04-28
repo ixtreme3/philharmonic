@@ -14,7 +14,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "/houses_of_culture", layout = MainLayout.class)
-@PageTitle("Houses of culture | Vaadin CRM")
+@PageTitle("Houses of culture")
 public class HouseOfCultureView extends VerticalLayout {
 
     private final HouseOfCultureService houseOfCultureService;

@@ -15,7 +15,7 @@ import com.vaadin.flow.router.Route;
 import java.util.Collections;
 
 @Route(value = "/queries/8", layout = MainLayout.class)
-@PageTitle("Query №8 | Vaadin CRM")
+@PageTitle("Query №8")
 public class Q_8 extends VerticalLayout {
 
     private final EventService eventService;

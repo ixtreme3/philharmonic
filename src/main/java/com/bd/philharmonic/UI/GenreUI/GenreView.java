@@ -14,7 +14,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "/genres", layout = MainLayout.class)
-@PageTitle("Genre | Vaadin CRM")
+@PageTitle("Genres")
 public class GenreView extends VerticalLayout {
 
     private final GenreService genreService;

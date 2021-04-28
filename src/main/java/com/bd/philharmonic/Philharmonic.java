@@ -3,6 +3,7 @@ package com.bd.philharmonic;
 import com.bd.philharmonic.Backend.Entity.*;
 import com.bd.philharmonic.Backend.Repository.*;
 import com.bd.philharmonic.Backend.Service.ArtistService;
+import com.bd.philharmonic.Backend.Service.EventService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,9 +20,9 @@ public class Philharmonic {
     }
 
     @Bean
-    public CommandLineRunner loadData(CulturalBuildingRepository culturalBuildingRepository, ArtistRepository artistRepository) {
+    public CommandLineRunner loadData(EventService eventService) {
         return (args) -> {
-
+//            System.out.println(eventService.getEventsByCulturalBuildingName(2));
         };
     }
 }

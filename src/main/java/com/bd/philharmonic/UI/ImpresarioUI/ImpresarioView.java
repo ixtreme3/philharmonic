@@ -14,7 +14,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "/impresarios", layout = MainLayout.class)
-@PageTitle("Impresario | Vaadin CRM")
+@PageTitle("Impresarios")
 public class ImpresarioView extends VerticalLayout {
 
     private final ImpresarioService impresarioService;

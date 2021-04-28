@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Route(value = "/queries/1", layout = MainLayout.class)
-@PageTitle("Query №1 | Vaadin CRM")
+@PageTitle("Query №1")
 public class Q_1 extends VerticalLayout {
 
     private final TheaterService theaterService;

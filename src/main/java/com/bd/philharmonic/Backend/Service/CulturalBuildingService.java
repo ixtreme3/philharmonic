@@ -6,9 +6,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class CulturalBuildingService {
 
-    private static CulturalBuildingRepository culturalBuildingRepository;
+    private final CulturalBuildingRepository culturalBuildingRepository;
 
-    int getIdByName(String param) {
+    public CulturalBuildingService(CulturalBuildingRepository culturalBuildingRepository) {
+        this.culturalBuildingRepository = culturalBuildingRepository;
+    }
+
+    public Integer getIdByName(String param) {
         return culturalBuildingRepository.getIdByName(param);
     };
 

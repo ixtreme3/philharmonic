@@ -5,8 +5,7 @@ import com.bd.philharmonic.UI.GenreUI.GenreView;
 import com.bd.philharmonic.UI.HouseOfCultureUI.HouseOfCultureView;
 import com.bd.philharmonic.UI.ImpresarioUI.ImpresarioView;
 import com.bd.philharmonic.UI.OrganizerUI.OrganizerView;
-import com.bd.philharmonic.UI.Queries.Q_1;
-import com.bd.philharmonic.UI.Queries.Q_8;
+import com.bd.philharmonic.UI.Queries.*;
 import com.bd.philharmonic.UI.TheaterUI.TheaterView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -29,7 +28,7 @@ public class MainLayout extends AppLayout {
     }
 
     private void createHeader() {
-        H1 logo = new H1("Vaadin CRM");
+        H1 logo = new H1("Philharmonic information system");
         logo.addClassName("logo");
 
         HorizontalLayout header = new HorizontalLayout(new DrawerToggle(), logo);
@@ -62,7 +61,22 @@ public class MainLayout extends AppLayout {
         RouterLink query1Link = new RouterLink("Query №1", Q_1.class);
         theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
+        RouterLink query2Link = new RouterLink("Query №2", Q_2.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink query3Link = new RouterLink("Query №3", Q_3.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink query4Link = new RouterLink("Query №4", Q_4.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink query5Link = new RouterLink("Query №5", Q_5.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
         RouterLink query8Link = new RouterLink("Query №8", Q_8.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink query9Link = new RouterLink("Query №9", Q_9.class);
         theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
         addToDrawer(new VerticalLayout(
@@ -74,7 +88,12 @@ public class MainLayout extends AppLayout {
             genresLink,
 
             query1Link,
-            query8Link
+            query2Link,
+            query3Link,
+            query4Link,
+            query5Link,
+            query8Link,
+            query9Link
         ));
     }
 

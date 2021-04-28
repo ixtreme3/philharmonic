@@ -16,7 +16,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "/artists", layout = MainLayout.class)
-@PageTitle("Artists | Vaadin CRM")
+@PageTitle("Artists")
 public class ArtistView extends VerticalLayout {
 
     private final ArtistService artistService;
@@ -80,11 +80,8 @@ public class ArtistView extends VerticalLayout {
         grid.addClassName("artist-grid");
         grid.setColumns("full_name", "age", "gender");
         grid.getColumnByKey("full_name").setHeader("Full name");
-
         grid.addColumn(Artist::getGenres_String).setHeader("Genres");
-
         grid.addColumn(Artist::getImpresarios_String).setHeader("Impresarios");
-
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
         grid.asSingleSelect().addValueChangeListener(evt -> editArtist(evt.getValue()));
         grid.setSizeFull();
