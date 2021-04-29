@@ -17,17 +17,17 @@ public class HouseOfCultureService {
         this.houseOfCultureRepository = houseOfCultureRepository;
     }
 
-    public Collection<HouseOfCulture> findAll() {
-        return (Collection<HouseOfCulture>) houseOfCultureRepository.findAll();
+    public List<HouseOfCulture> findAll() {
+        return houseOfCultureRepository.findAll();
     }
 
     public List<HouseOfCulture> getHouseOfCultureByCapacityGreaterThanEqual(int param) {
         return houseOfCultureRepository.getHouseOfCultureByCapacityGreaterThanEqual(param);
     }
 
-    public Collection<HouseOfCulture> findAll(String filterText) {
+    public List<HouseOfCulture> findAll(String filterText) {
         if (filterText == null || filterText.isEmpty()) {
-            return (Collection<HouseOfCulture>) houseOfCultureRepository.findAll();
+            return houseOfCultureRepository.findAll();
         } else {
             return houseOfCultureRepository.search(filterText);
         }

@@ -42,6 +42,7 @@ public class Q_8 extends VerticalLayout {
     private HorizontalLayout getToolBar() {
         fieldBuildingName.setPlaceholder("Enter name of building...");
         fieldBuildingName.setClearButtonVisible(true);
+        fieldBuildingName.setWidth("300px");
 
         Button queryButton = new Button("Query", click -> listEvents(resolveName(fieldBuildingName.getValue())));
         HorizontalLayout toolbar = new HorizontalLayout(fieldBuildingName, queryButton);
