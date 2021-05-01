@@ -62,7 +62,7 @@ public class Q_1 extends VerticalLayout {
         } else if (type.equals("Театр") || type.equals("театр")) {
             Grid<Theater> newGrid = new Grid<>(Theater.class);
             configureTheaterGrid(newGrid);
-            setTheaterGrid(type, newGrid);
+            setTheaterGrid(newGrid);
             replace(getComponentAt(1), newGrid);
         }
 
@@ -75,7 +75,7 @@ public class Q_1 extends VerticalLayout {
         } else if (type.equals("Дом культуры") || type.equals("дом культуры")) {
             Grid<HouseOfCulture> grid = new Grid<>(HouseOfCulture.class);
             configureHouseOfCultureGrid(grid);
-            setHouseOfCultureGrid(type, grid);
+            setHouseOfCultureGrid(grid);
             replace(getComponentAt(1), grid);
         }
     }
@@ -95,13 +95,13 @@ public class Q_1 extends VerticalLayout {
         grid.setSizeFull();
     }
 
-    private void setTheaterGrid(String type, Grid<Theater> grid) {
-        List<Theater> theaters = (List<Theater>) theaterService.findAll();
+    private void setTheaterGrid(Grid<Theater> grid) {
+        List<Theater> theaters = theaterService.findAll();
         grid.setItems(Objects.requireNonNullElse(theaters, Collections.emptyList()));
     }
 
-    private void setHouseOfCultureGrid(String type, Grid<HouseOfCulture> grid) {
-        List<HouseOfCulture> housesOfCulture = (List<HouseOfCulture>) houseOfCultureService.findAll();
+    private void setHouseOfCultureGrid(Grid<HouseOfCulture> grid) {
+        List<HouseOfCulture> housesOfCulture = houseOfCultureService.findAll();
         grid.setItems(Objects.requireNonNullElse(housesOfCulture, Collections.emptyList()));
     }
 }

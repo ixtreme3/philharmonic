@@ -24,23 +24,35 @@ CREATE TABLE theater
     CONSTRAINT FK_21 FOREIGN KEY ( id_place ) REFERENCES cultural_building ( id_place )
 );
 
+-- CREATE TABLE event
+-- (
+--     id_event      bigint NOT NULL,
+--     name          text NOT NULL,
+--     visit_price   integer NOT NULL,
+--     start_date    date NOT NULL,
+--     end_date      date NOT NULL,
+--     CONSTRAINT PK_event PRIMARY KEY ( id_event )
+-- );
+
+-- CREATE TABLE event_building
+-- (
+--     id_event bigint NOT NULL,
+--     id_place bigint NOT NULL,
+--     CONSTRAINT PK_event_building PRIMARY KEY ( id_event, id_place ),
+--     CONSTRAINT FK_41 FOREIGN KEY ( id_place ) REFERENCES cultural_building ( id_place ),
+--     CONSTRAINT FK_37 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
+-- );
+
 CREATE TABLE event
 (
-    id_event      bigint NOT NULL,
-    name          text NOT NULL,
-    visit_price   integer NOT NULL,
-    start_date    date NOT NULL,
-    end_date      date NOT NULL,
-    CONSTRAINT PK_event PRIMARY KEY ( id_event )
-);
-
-CREATE TABLE event_building
-(
-    id_event bigint NOT NULL,
-    id_place bigint NOT NULL,
-    CONSTRAINT PK_event_building PRIMARY KEY ( id_event, id_place ),
-    CONSTRAINT FK_41 FOREIGN KEY ( id_place ) REFERENCES cultural_building ( id_place ),
-    CONSTRAINT FK_37 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
+    id_event    bigint NOT NULL,
+    id_place    bigint NOT NULL,
+    name        text NOT NULL,
+    visit_price integer NOT NULL,
+    start_date  date NOT NULL,
+    end_date    date NOT NULL,
+    CONSTRAINT PK_events PRIMARY KEY ( id_event ),
+    CONSTRAINT FK_161 FOREIGN KEY ( id_place ) REFERENCES cultural_building ( id_place )
 );
 
 CREATE TABLE artist

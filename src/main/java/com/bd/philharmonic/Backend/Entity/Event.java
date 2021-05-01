@@ -34,13 +34,17 @@ public class Event {
 
     }
 
-    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "event_building",
-            joinColumns = { @JoinColumn(name = "id_event") },
-            inverseJoinColumns = { @JoinColumn(name = "id_place") }
-    )
-    Set<CulturalBuilding> culturalBuildings = new HashSet<>();
+//    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "event_building",
+//            joinColumns = { @JoinColumn(name = "id_event") },
+//            inverseJoinColumns = { @JoinColumn(name = "id_place") }
+//    )
+//    Set<CulturalBuilding> culturalBuildings = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "id_place", nullable = false)
+    CulturalBuilding culturalBuilding;
 
     @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinTable(

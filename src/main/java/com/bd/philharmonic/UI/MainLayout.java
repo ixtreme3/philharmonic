@@ -73,6 +73,9 @@ public class MainLayout extends AppLayout {
         RouterLink query5Link = new RouterLink("Query №5", Q_5.class);
         theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
+        RouterLink query6Link = new RouterLink("Query №6", Q_6.class);
+        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+
         RouterLink query8Link = new RouterLink("Query №8", Q_8.class);
         theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
@@ -92,6 +95,7 @@ public class MainLayout extends AppLayout {
             query3Link,
             query4Link,
             query5Link,
+            query6Link,
             query8Link,
             query9Link
         ));

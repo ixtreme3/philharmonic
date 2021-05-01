@@ -20,15 +20,12 @@ public class Q_8 extends VerticalLayout {
 
     private final EventService eventService;
 
-    private final CulturalBuildingRepository culturalBuildingRepository;
-
     private final Grid<Event> grid;
 
     private final TextField fieldBuildingName = new TextField();
 
     public Q_8(EventService eventService, CulturalBuildingRepository culturalBuildingRepository) {
         this.eventService = eventService;
-        this.culturalBuildingRepository = culturalBuildingRepository;
         addClassName("query_8_view");
         this.grid = new Grid<>(Event.class);
 
@@ -44,18 +41,10 @@ public class Q_8 extends VerticalLayout {
         fieldBuildingName.setClearButtonVisible(true);
         fieldBuildingName.setWidth("300px");
 
-        Button queryButton = new Button("Query", click -> listEvents(resolveName(fieldBuildingName.getValue())));
+        Button queryButton = new Button("Query", click -> listEvents(fieldBuildingName.getValue()));
         HorizontalLayout toolbar = new HorizontalLayout(fieldBuildingName, queryButton);
         toolbar.addClassName("toolbar");
         return toolbar;
-    }
-
-    private int resolveName(String value) {
-        Integer idByName = culturalBuildingRepository.getIdByName(value);
-        if (idByName != null) {
-            return idByName;
-        }
-        return 0;
     }
 
     private void configureGrid() {
@@ -68,8 +57,8 @@ public class Q_8 extends VerticalLayout {
         setSizeFull();
     }
 
-    private void listEvents(int param) {
-        if (param == 0) {
+    private void listEvents(String param) {
+        if (param.isEmpty() ) {
             grid.setItems(Collections.emptyList());
         } else grid.setItems(eventService.getEventsByCulturalBuildingName(param));
     }
