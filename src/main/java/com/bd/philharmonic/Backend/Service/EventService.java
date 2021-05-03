@@ -1,5 +1,6 @@
 package com.bd.philharmonic.Backend.Service;
 
+import com.bd.philharmonic.Backend.Entity.Artist;
 import com.bd.philharmonic.Backend.Entity.Event;
 import com.bd.philharmonic.Backend.Repository.EventRepository;
 import org.springframework.data.repository.query.Param;
@@ -17,6 +18,14 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
+    public List<Event> findAll(String filterText) {
+        if (filterText == null || filterText.isEmpty()) {
+            return eventRepository.findAll();
+        } else {
+            return eventRepository.search(filterText);
+        }
+    }
+
     public List<Event> findAll() {
         return eventRepository.findAll();
     }
@@ -32,5 +41,18 @@ public class EventService {
     public List<Event> getEventsByOrganizerName(String param) {
         return eventRepository.getEventsByOrganizerName(param);
     }
+
+    public void save(Event event) {
+        if (event == null){
+            return;
+        }
+        eventRepository.save(event);
+    }
+
+    public void delete(Event event) {
+        eventRepository.delete(event);
+    }
+
+
 
 }

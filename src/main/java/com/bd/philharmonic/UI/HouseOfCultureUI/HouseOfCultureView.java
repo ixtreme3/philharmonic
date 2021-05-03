@@ -61,12 +61,9 @@ public class HouseOfCultureView extends VerticalLayout {
         filterText.setClearButtonVisible(true);
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
         filterText.addValueChangeListener(e -> listHousesOfCulture());
-
-        Button addTheaterButton = new Button("Add house of culture", click -> addHouseOfCulture());
-
-        HorizontalLayout toolbar = new HorizontalLayout(filterText, addTheaterButton);
+        Button addHouseOfCultureButton = new Button("Add house of culture", click -> addHouseOfCulture());
+        HorizontalLayout toolbar = new HorizontalLayout(filterText, addHouseOfCultureButton);
         toolbar.addClassName("toolbar");
-
         return toolbar;
     }
 

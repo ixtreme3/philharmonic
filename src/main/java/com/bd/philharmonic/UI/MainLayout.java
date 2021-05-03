@@ -1,10 +1,12 @@
 package com.bd.philharmonic.UI;
 
 import com.bd.philharmonic.UI.ArtistUI.ArtistView;
+import com.bd.philharmonic.UI.ConcertUI.ConcertView;
 import com.bd.philharmonic.UI.GenreUI.GenreView;
 import com.bd.philharmonic.UI.HouseOfCultureUI.HouseOfCultureView;
 import com.bd.philharmonic.UI.ImpresarioUI.ImpresarioView;
 import com.bd.philharmonic.UI.OrganizerUI.OrganizerView;
+import com.bd.philharmonic.UI.PerformanceUI.PerformanceView;
 import com.bd.philharmonic.UI.Queries.*;
 import com.bd.philharmonic.UI.TheaterUI.TheaterView;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -44,43 +46,49 @@ public class MainLayout extends AppLayout {
         theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink housesOfCultureLink = new RouterLink("Houses of culture", HouseOfCultureView.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        housesOfCultureLink.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink organizersLink = new RouterLink("Events organizers", OrganizerView.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        organizersLink.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink impresariosLink = new RouterLink("Impresarios", ImpresarioView.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        impresariosLink.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink artistsLink = new RouterLink("Artists", ArtistView.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        artistsLink.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink concertLink = new RouterLink("Concerts", ConcertView.class);
+        concertLink.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink performanceLink = new RouterLink("Performances", PerformanceView.class);
+        performanceLink.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink genresLink = new RouterLink("Genres", GenreView.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        genresLink.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink query1Link = new RouterLink("Query №1", Q_1.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        query1Link.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink query2Link = new RouterLink("Query №2", Q_2.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        query2Link.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink query3Link = new RouterLink("Query №3", Q_3.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        query3Link.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink query4Link = new RouterLink("Query №4", Q_4.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        query4Link.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink query5Link = new RouterLink("Query №5", Q_5.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        query5Link.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink query6Link = new RouterLink("Query №6", Q_6.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        query6Link.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink query8Link = new RouterLink("Query №8", Q_8.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        query8Link.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink query9Link = new RouterLink("Query №9", Q_9.class);
-        theatersLink.setHighlightCondition(HighlightConditions.sameLocation());
+        query9Link.setHighlightCondition(HighlightConditions.sameLocation());
 
         addToDrawer(new VerticalLayout(
             theatersLink,
@@ -89,6 +97,8 @@ public class MainLayout extends AppLayout {
             impresariosLink,
             artistsLink,
             genresLink,
+            concertLink,
+            performanceLink,
 
             query1Link,
             query2Link,

@@ -24,25 +24,6 @@ CREATE TABLE theater
     CONSTRAINT FK_21 FOREIGN KEY ( id_place ) REFERENCES cultural_building ( id_place )
 );
 
--- CREATE TABLE event
--- (
---     id_event      bigint NOT NULL,
---     name          text NOT NULL,
---     visit_price   integer NOT NULL,
---     start_date    date NOT NULL,
---     end_date      date NOT NULL,
---     CONSTRAINT PK_event PRIMARY KEY ( id_event )
--- );
-
--- CREATE TABLE event_building
--- (
---     id_event bigint NOT NULL,
---     id_place bigint NOT NULL,
---     CONSTRAINT PK_event_building PRIMARY KEY ( id_event, id_place ),
---     CONSTRAINT FK_41 FOREIGN KEY ( id_place ) REFERENCES cultural_building ( id_place ),
---     CONSTRAINT FK_37 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
--- );
-
 CREATE TABLE event
 (
     id_event    bigint NOT NULL,
@@ -117,9 +98,10 @@ CREATE TABLE event_organizer
 
 CREATE TABLE event_artist
 (
-    id_event  bigint NOT NULL,
-    id_artist bigint NOT NULL,
-    CONSTRAINT PK_event_artist PRIMARY KEY ( id_event, id_artist ),
+    id_event     bigint NOT NULL,
+    winner_place integer NULL,
+    id_artist    bigint NOT NULL,
+    CONSTRAINT PK_events_artists PRIMARY KEY ( id_event, id_artist ),
     CONSTRAINT FK_78 FOREIGN KEY ( id_event ) REFERENCES event ( id_event ),
     CONSTRAINT FK_82 FOREIGN KEY ( id_artist ) REFERENCES artist ( id_artist )
 );
@@ -136,15 +118,14 @@ CREATE TABLE contest
 (
     id_event               bigint NOT NULL,
     number_of_participants integer NOT NULL,
-    age_category           text NOT NULL,
     CONSTRAINT PK_contest PRIMARY KEY ( id_event ),
     CONSTRAINT FK_110 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
 );
 
 CREATE TABLE performance
 (
-    id_event          bigint NOT NULL,
-    performance_theme text NOT NULL,
+    id_event            bigint NOT NULL,
+    intermission_length integer NOT NULL,
     CONSTRAINT PK_performance PRIMARY KEY ( id_event ),
     CONSTRAINT FK_116 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
 );

@@ -43,14 +43,14 @@ public class OrganizerView extends VerticalLayout {
         closeEditor();
     }
 
-    private void deleteOrganizer(OrganizerForm.DeleteEvent theater) {
-        organizerService.delete(theater.getTheater());
+    private void deleteOrganizer(OrganizerForm.DeleteEvent organizer) {
+        organizerService.delete(organizer.getOrganizer());
         listOrganizers();
         closeEditor();
     }
 
     private void saveOrganizer(OrganizerForm.SaveEvent evt) {
-        organizerService.save(evt.getTheater());
+        organizerService.save(evt.getOrganizer());
         listOrganizers();
         closeEditor();
     }
@@ -60,12 +60,9 @@ public class OrganizerView extends VerticalLayout {
         filterText.setClearButtonVisible(true);
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
         filterText.addValueChangeListener(e -> listOrganizers());
-
-        Button addTheaterButton = new Button("Add organizer", click -> addOrganizer());
-
-        HorizontalLayout toolbar = new HorizontalLayout(filterText, addTheaterButton);
+        Button addOrganizerButton = new Button("Add organizer", click -> addOrganizer());
+        HorizontalLayout toolbar = new HorizontalLayout(filterText, addOrganizerButton);
         toolbar.addClassName("toolbar");
-
         return toolbar;
     }
 

@@ -35,14 +35,11 @@ public class ArtistForm extends FormLayout {
 
     public ArtistForm(List<Genre> genreList, List<Impresario> impresarioList) {
         addClassName("artist-form");
-
         binder.bindInstanceFields(this);
-
         genres.setItems(genreList);
         genres.setItemLabelGenerator(Genre::getGenre_name);
         impresarios.setItems(impresarioList);
         impresarios.setItemLabelGenerator(Impresario::getFull_name);
-
         add(
                 full_name,
                 age,
@@ -113,6 +110,5 @@ public class ArtistForm extends FormLayout {
                                                                   ComponentEventListener<T> listener) {
         return getEventBus().addListener(eventType, listener);
     }
-
 
 }

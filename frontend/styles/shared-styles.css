@@ -138,3 +138,45 @@ a[highlight] {
     display: none;
   }
 }
+
+/* Concert view */
+.concert-view .content {
+  display: flex;
+}
+
+.concert-view .concert-grid {
+  flex: 4;
+}
+
+.concert-view .concert-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .concert-view.editing .toolbar,
+  .concert-view.editing .concert-grid {
+    display: none;
+  }
+}
+
+/* Performance view */
+.performance-view .content {
+  display: flex;
+}
+
+.performance-view .performance-grid {
+  flex: 4;
+}
+
+.performance-view .performance-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .performance-view.editing .toolbar,
+  .performance-view.editing .performance-grid {
+    display: none;
+  }
+}

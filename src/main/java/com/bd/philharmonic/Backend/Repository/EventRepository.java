@@ -1,5 +1,6 @@
 package com.bd.philharmonic.Backend.Repository;
 
+import com.bd.philharmonic.Backend.Entity.Artist;
 import com.bd.philharmonic.Backend.Entity.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,6 +12,10 @@ import java.util.List;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
+
+    @Query("select e from Event e " +
+            "where lower(e.name) like lower(concat('%', :searchTerm, '%'))")
+    List<Event> search(@Param("searchTerm") String searchTerm);
 
     //  Запрос 8: Получить перечень концертных мероприятий, проведенных в указанном культурном сооружении.
     @Query(value = """

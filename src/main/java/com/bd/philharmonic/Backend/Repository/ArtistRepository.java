@@ -36,7 +36,7 @@ public interface ArtistRepository extends JpaRepository<Artist, Long> {
             where i.full_name = :param""", nativeQuery = true)
     List<Artist> getArtistsByImpresario(@Param("param") String param);
 
-    // Запрос 4 : Получить список артистов, выступающих более чем в одним жанре с их указанием.
+    // Запрос 4 : Получить список артистов, выступающих более чем в одном жанре с их указанием.
     @Query(value = """
             select * from artist a
             where a.id_artist in 

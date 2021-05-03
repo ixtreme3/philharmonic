@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 
 @Repository
-public interface CulturalBuildingRepository extends CrudRepository<CulturalBuilding, Long> {
+public interface CulturalBuildingRepository extends JpaRepository<CulturalBuilding, Long> {
 
     @Query(value = "select id_place from cultural_building where name = :param", nativeQuery = true)
     Integer getIdByName(@Param("param") String param);

@@ -34,19 +34,11 @@ public class Event {
 
     }
 
-//    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "event_building",
-//            joinColumns = { @JoinColumn(name = "id_event") },
-//            inverseJoinColumns = { @JoinColumn(name = "id_place") }
-//    )
-//    Set<CulturalBuilding> culturalBuildings = new HashSet<>();
-
     @ManyToOne
     @JoinColumn(name = "id_place", nullable = false)
     CulturalBuilding culturalBuilding;
 
-    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "event_artist",
             joinColumns = { @JoinColumn(name = "id_event") },
@@ -54,7 +46,7 @@ public class Event {
     )
     Set<Artist> artists = new HashSet<>();
 
-    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "event_organizer",
             joinColumns = { @JoinColumn(name = "id_event") },
@@ -102,14 +94,46 @@ public class Event {
         this.end_date = end_date;
     }
 
+    public CulturalBuilding getCulturalBuilding() {
+        return culturalBuilding;
+    }
+
+    public void setCulturalBuilding(CulturalBuilding culturalBuilding) {
+        this.culturalBuilding = culturalBuilding;
+    }
+
+    public Set<Artist> getArtists() {
+        return artists;
+    }
+
+    public void setArtists(Set<Artist> artists) {
+        this.artists = artists;
+    }
+
+    public Set<Organizer> getOrganizers() {
+        return organizers;
+    }
+
+    public void setOrganizers(Set<Organizer> organizers) {
+        this.organizers = organizers;
+    }
+
+    public String getCulturalBuildingName_String(){
+        return culturalBuilding.getName();
+    }
+
     @Override
     public String toString() {
-        return "Events{" +
+        return "Event{" +
                 "id_event=" + id_event +
                 ", name='" + name + '\'' +
-                ", visit_prise=" + visit_price +
+                ", visit_price=" + visit_price +
                 ", start_date=" + start_date +
                 ", end_date=" + end_date +
+                ", culturalBuilding=" + culturalBuilding +
+                ", artists=" + artists +
+                ", organizers=" + organizers +
                 '}';
     }
+
 }

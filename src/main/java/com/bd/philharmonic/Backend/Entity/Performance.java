@@ -8,29 +8,29 @@ import java.time.LocalDate;
 @Table(name = "performance")
 public class Performance extends Event {
 
-    private String performance_theme;
+    private int intermission_length;
 
-    public Performance(String name, int visit_price, LocalDate start_date, LocalDate end_date, String performance_theme) {
+    public Performance(String name, int visit_price, LocalDate start_date, LocalDate end_date, int intermission_length) {
         super(name, visit_price, start_date, end_date);
-        this.performance_theme = performance_theme;
+        this.intermission_length = intermission_length;
     }
 
     public Performance() {
 
     }
 
-    public String getPerformance_theme() {
-        return performance_theme;
+    public int getIntermission_length() {
+        return intermission_length;
     }
 
-    public void setPerformance_theme(String performance_theme) {
-        this.performance_theme = performance_theme;
+    public void setIntermission_length(int intermission_length) {
+        this.intermission_length = intermission_length;
     }
 
     @Override
     public String toString() {
         return "Performance{" +
-                "performance_theme='" + performance_theme + '\'' +
+                "intermission_length=" + intermission_length +
                 '}';
     }
 

@@ -27,6 +27,12 @@ public class Concert extends Event {
         this.live_music = live_music;
     }
 
+    public String get_LiveMusic_String(){
+        if (isLive_music()) {
+            return "✓";
+        } else return "✗";
+    }
+
     @Override
     public String toString() {
         return "Concert{" +

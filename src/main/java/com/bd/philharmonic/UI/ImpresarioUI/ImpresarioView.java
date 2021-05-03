@@ -61,12 +61,9 @@ public class ImpresarioView extends VerticalLayout {
         filterText.setClearButtonVisible(true);
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
         filterText.addValueChangeListener(e -> listImpresarios());
-
         Button addImpresarioButton = new Button("Add impresario", click -> addImpresario());
-
         HorizontalLayout toolbar = new HorizontalLayout(filterText, addImpresarioButton);
         toolbar.addClassName("toolbar");
-
         return toolbar;
     }
 

@@ -69,7 +69,7 @@ public class OrganizerForm extends FormLayout {
             this.organizer = organizer;
         }
 
-        public Organizer getTheater() {
+        public Organizer getOrganizer() {
             return organizer;
         }
     }
