@@ -90,6 +90,9 @@ public class MainLayout extends AppLayout {
         RouterLink query9Link = new RouterLink("Query №9", Q_9.class);
         query9Link.setHighlightCondition(HighlightConditions.sameLocation());
 
+        RouterLink query11Link = new RouterLink("Query №11", Q_11.class);
+        query11Link.setHighlightCondition(HighlightConditions.sameLocation());
+
         addToDrawer(new VerticalLayout(
             theatersLink,
             housesOfCultureLink,
@@ -107,7 +110,8 @@ public class MainLayout extends AppLayout {
             query5Link,
             query6Link,
             query8Link,
-            query9Link
+            query9Link,
+            query11Link
         ));
     }
 

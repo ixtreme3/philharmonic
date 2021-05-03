@@ -43,7 +43,6 @@ public class Q_6 extends VerticalLayout {
     }
 
     private HorizontalLayout getToolBar() {
-
         startDate = new DatePicker("Start date");
         endDate = new DatePicker("End date");
         startDate.setAutoOpen(false);
