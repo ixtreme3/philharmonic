@@ -126,6 +126,8 @@ INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (10, 8, null)
 INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (11, 14, null);
 INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (12, 15, null);
 INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (13, 7, 1);
+INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (13, 2, 2);
+INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (13, 6, 3);
 INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (14, 12, 3);
 INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (15, 2, 1);
 INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (16, 7, 2);

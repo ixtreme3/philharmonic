@@ -35,8 +35,8 @@ public class PerformanceView extends VerticalLayout {
         setSizeFull();
         configureGrid();
 
-        performanceForm = new PerformanceForm(artistService.findAll(null),
-                organizerService.findAll(null), culturalBuildingService.findAll());
+        performanceForm = new PerformanceForm(artistService.findAll(null), organizerService.findAll(null),
+                culturalBuildingService.findAll());
         performanceForm.addListener(PerformanceForm.SaveEvent.class, this::savePerformance);
         performanceForm.addListener(PerformanceForm.DeleteEvent.class, this::deletePerformance);
         performanceForm.addListener(PerformanceForm.CloseEvent.class, e -> closeEditor());
