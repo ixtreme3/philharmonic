@@ -180,3 +180,24 @@ a[highlight] {
     display: none;
   }
 }
+
+/* Contest view */
+.contest-view .content {
+  display: flex;
+}
+
+.contest-view .contest-grid {
+  flex: 4;
+}
+
+.contest-view .contest-form {
+  flex: 1;
+  padding: var(--lumo-space-m);
+}
+
+@media all and (max-width: 1100px) {
+  .contest-view.editing .toolbar,
+  .contest-view.editing .contest-grid {
+    display: none;
+  }
+}

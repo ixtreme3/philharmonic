@@ -85,8 +85,8 @@ public class ConcertView extends VerticalLayout {
         grid.getColumnByKey("visit_price").setHeader("Visit price");
         grid.getColumnByKey("start_date").setHeader("Start date");
         grid.getColumnByKey("end_date").setHeader("End date");
-        grid.addColumn(Concert::get_LiveMusic_String).setHeader("Live music").setKey("live_music");
-        grid.addColumn(Concert::getCulturalBuildingName_String).setHeader("Place").setKey("place");
+        grid.addColumn(Concert::get_LiveMusic_String).setHeader("Live music");
+        grid.addColumn(Concert::getCulturalBuildingName_String).setHeader("Place");
         grid.setColumnOrder(Arrays.asList(grid.getColumns().get(0), grid.getColumns().get(5), grid.getColumns().get(1),
                 grid.getColumns().get(2), grid.getColumns().get(3), grid.getColumns().get(4)));
         grid.getColumns().forEach(col -> col.setAutoWidth(true));

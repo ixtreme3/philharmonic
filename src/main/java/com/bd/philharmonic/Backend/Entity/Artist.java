@@ -39,6 +39,9 @@ public class Artist {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "artists")
     private final Set<Event> events = new HashSet<>();
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "artist")
+    private Set<Prizewinner> prizewinners = new HashSet<>();
+
     public Long getId_artist() {
         return id_artist;
     }
@@ -89,6 +92,14 @@ public class Artist {
 
     public Set<Event> getEvents() {
         return events;
+    }
+
+    public Set<Prizewinner> getPrizewinners() {
+        return prizewinners;
+    }
+
+    public void setPrizewinners(Set<Prizewinner> prizewinners) {
+        this.prizewinners = prizewinners;
     }
 
     public String getGenres_String() {

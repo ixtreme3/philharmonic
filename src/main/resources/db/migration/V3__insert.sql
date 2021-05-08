@@ -110,27 +110,35 @@ INSERT INTO artist (id_artist, full_name, age, gender) VALUES (16, 'Алекса
 INSERT INTO artist (id_artist, full_name, age, gender) VALUES (17, 'Данилов Никита Егорович', 41, 'Мужчина');
 INSERT INTO artist (id_artist, full_name, age, gender) VALUES (18, 'Кудрявцева София Вадимовна', 29, 'Женщина');
 
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (1, 1, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (1, 17, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (2, 2, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (3, 16, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (3, 18, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (4, 4, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (5, 9, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (5, 13, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (6, 10, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (7, 11, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (8, 3, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (9, 5, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (10, 8, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (11, 14, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (12, 15, null);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (13, 7, 1);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (13, 2, 2);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (13, 6, 3);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (14, 12, 3);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (15, 2, 1);
-INSERT INTO event_artist(id_event, id_artist, winner_place) VALUES (16, 7, 2);
+INSERT INTO event_artist(id_event, id_artist) VALUES (1, 1);
+INSERT INTO event_artist(id_event, id_artist) VALUES (1, 17);
+INSERT INTO event_artist(id_event, id_artist) VALUES (2, 2);
+INSERT INTO event_artist(id_event, id_artist) VALUES (3, 16);
+INSERT INTO event_artist(id_event, id_artist) VALUES (3, 18);
+INSERT INTO event_artist(id_event, id_artist) VALUES (4, 4);
+INSERT INTO event_artist(id_event, id_artist) VALUES (5, 9);
+INSERT INTO event_artist(id_event, id_artist) VALUES (5, 13);
+INSERT INTO event_artist(id_event, id_artist) VALUES (6, 10);
+INSERT INTO event_artist(id_event, id_artist) VALUES (7, 11);
+INSERT INTO event_artist(id_event, id_artist) VALUES (8, 3);
+INSERT INTO event_artist(id_event, id_artist) VALUES (9, 5);
+INSERT INTO event_artist(id_event, id_artist) VALUES (10, 8);
+INSERT INTO event_artist(id_event, id_artist) VALUES (11, 14);
+INSERT INTO event_artist(id_event, id_artist) VALUES (12, 15);
+
+INSERT INTO event_artist(id_event, id_artist) VALUES (13, 7);
+INSERT INTO event_artist(id_event, id_artist) VALUES (13, 2);
+INSERT INTO event_artist(id_event, id_artist) VALUES (13, 6);
+INSERT INTO event_artist(id_event, id_artist) VALUES (14, 12);
+INSERT INTO event_artist(id_event, id_artist) VALUES (15, 2);
+INSERT INTO event_artist(id_event, id_artist) VALUES (16, 7);
+
+INSERT INTO prizewinner (id_prizewinner, id_event, id_artist, place) VALUES (1, 13, 7, 1);
+INSERT INTO prizewinner (id_prizewinner, id_event, id_artist, place) VALUES (2, 13, 2, 2);
+INSERT INTO prizewinner (id_prizewinner, id_event, id_artist, place) VALUES (3, 13, 6, 3);
+INSERT INTO prizewinner (id_prizewinner, id_event, id_artist, place) VALUES (4, 14, 12, 3);
+INSERT INTO prizewinner (id_prizewinner, id_event, id_artist, place) VALUES (5, 15, 2, 1);
+INSERT INTO prizewinner (id_prizewinner, id_event, id_artist, place) VALUES (6, 16, 7, 2);
 
 INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (1, 'Афанасьев Никита Степанович', 47, 'Мужчина');
 INSERT INTO impresario (id_impresario, full_name, age, gender) VALUES (2, 'Сазонов Даниил Павлович', 54, 'Мужчина');

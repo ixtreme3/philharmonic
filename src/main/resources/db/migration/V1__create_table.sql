@@ -98,10 +98,9 @@ CREATE TABLE event_organizer
 
 CREATE TABLE event_artist
 (
-    id_event     bigint NOT NULL,
-    winner_place integer NULL,
-    id_artist    bigint NOT NULL,
-    CONSTRAINT PK_events_artists PRIMARY KEY ( id_event, id_artist ),
+    id_event  bigint NOT NULL,
+    id_artist bigint NOT NULL,
+    CONSTRAINT PK_events_artist PRIMARY KEY ( id_event, id_artist ),
     CONSTRAINT FK_78 FOREIGN KEY ( id_event ) REFERENCES event ( id_event ),
     CONSTRAINT FK_82 FOREIGN KEY ( id_artist ) REFERENCES artist ( id_artist )
 );
@@ -128,6 +127,17 @@ CREATE TABLE performance
     intermission_length integer NOT NULL CHECK (intermission_length >= 0),
     CONSTRAINT PK_performance PRIMARY KEY ( id_event ),
     CONSTRAINT FK_116 FOREIGN KEY ( id_event ) REFERENCES event ( id_event )
+);
+
+CREATE TABLE prizewinner
+(
+    id_prizewinner bigint NOT NULL,
+    id_event       bigint NOT NULL,
+    id_artist      bigint NOT NULL,
+    place          integer NOT NULL CHECK (place >= 1 and place <= 3),
+    CONSTRAINT PK_prizewinner PRIMARY KEY ( id_prizewinner ),
+    CONSTRAINT FK_181 FOREIGN KEY ( id_event ) REFERENCES contest ( id_event ),
+    CONSTRAINT FK_184 FOREIGN KEY ( id_artist ) REFERENCES artist ( id_artist )
 );
 
 CREATE TABLE artist_logs

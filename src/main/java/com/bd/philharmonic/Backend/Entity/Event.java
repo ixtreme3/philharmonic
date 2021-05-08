@@ -36,7 +36,7 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "id_place", nullable = false)
-    CulturalBuilding culturalBuilding;
+    private CulturalBuilding culturalBuilding;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     @JoinTable(

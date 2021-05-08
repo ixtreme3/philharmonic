@@ -20,9 +20,6 @@ public class CulturalBuilding {
 
     private int capacity;
 
-//    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "culturalBuildings")
-//    private final Set<Event> events = new HashSet<>();//
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "culturalBuilding")
     private final Set<Event> events = new HashSet<>();
 
@@ -66,6 +63,10 @@ public class CulturalBuilding {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public Set<Event> getEvents() {
+        return events;
     }
 
     @Override
