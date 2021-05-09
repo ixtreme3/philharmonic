@@ -27,8 +27,15 @@ public class ContestView extends VerticalLayout {
 
     private final ContestForm contestForm;
 
+    private final ArtistService artistService;
+
+    private final PrizewinnerService prizewinnerService;
+
     public ContestView(ContestService contestService, ArtistService artistService, OrganizerService organizerService,
                        CulturalBuildingService culturalBuildingService, PrizewinnerService prizewinnerService) {
+        this.artistService = artistService;
+        this.prizewinnerService = prizewinnerService;
+
         this.contestService = contestService;
         this.grid = new Grid<>(Contest.class);
         addClassName("contest-view");
@@ -36,7 +43,7 @@ public class ContestView extends VerticalLayout {
         configureGrid();
 
         contestForm = new ContestForm(artistService.findAll(null), organizerService.findAll(null),
-                culturalBuildingService.findAll(), contestService, prizewinnerService);
+                culturalBuildingService.findAll(), contestService, prizewinnerService, artistService);
         contestForm.addListener(ContestForm.SaveEvent.class, this::saveContest);
         contestForm.addListener(ContestForm.DeleteEvent.class, this::deleteContest);
         contestForm.addListener(ContestForm.CloseEvent.class, e -> closeEditor());
@@ -96,6 +103,27 @@ public class ContestView extends VerticalLayout {
             closeEditor();
         } else {
             contestForm.setContest(contest);
+//            contestForm.firstPlaceComboBox.setItems(artistService.getArtistsByContest(contest.getName()));
+//            contestForm.binder.bind(contestForm.firstPlaceComboBox, contest1 -> contest1.getWinnerNameByPlace(1),
+//                    (c, artist) -> {
+//                            contest.setWinnerByPlace(prizewinnerService, contestForm.firstPlaceComboBox.getValue(), 1);
+//                    });
+//
+//            contestForm.secondPlaceComboBox.setItems(artistService.getArtistsByContest(contest.getName()));
+//            contestForm.binder.bind(contestForm.secondPlaceComboBox, contest1 -> contest1.getWinnerNameByPlace(2),
+//                    (c, artist) -> {
+//                        contest.setWinnerByPlace(prizewinnerService, contestForm.secondPlaceComboBox.getValue(), 2);
+//                    });
+//
+//            contestForm.thirdPlaceComboBox.setItems(artistService.getArtistsByContest(contest.getName()));
+//            contestForm.binder.bind(contestForm.thirdPlaceComboBox, contest1 -> contest1.getWinnerNameByPlace(3),
+//                    (c, artist) -> {
+//                        contest.setWinnerByPlace(prizewinnerService, contestForm.thirdPlaceComboBox.getValue(), 3);
+//                    });
+//
+//            contestForm.firstPlaceComboBox.setItems(artistService.getArtistsByContest(contest.getName()));
+//            contestForm.secondPlaceComboBox.setItems(artistService.getArtistsByContest(contest.getName()));
+//            contestForm.thirdPlaceComboBox.setItems(artistService.getArtistsByContest(contest.getName()));
             contestForm.setVisible(true);
             addClassName("editing");
         }

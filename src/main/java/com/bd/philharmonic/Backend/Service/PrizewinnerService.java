@@ -23,5 +23,4 @@ public class PrizewinnerService {
     public void delete(Prizewinner prizewinner) {
         prizewinnerRepository.delete(prizewinner);
     }
-
 }

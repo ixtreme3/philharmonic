@@ -1,6 +1,7 @@
 package com.bd.philharmonic.UI.ContestUI;
 
 import com.bd.philharmonic.Backend.Entity.*;
+import com.bd.philharmonic.Backend.Service.ArtistService;
 import com.bd.philharmonic.Backend.Service.ContestService;
 import com.bd.philharmonic.Backend.Service.PrizewinnerService;
 import com.vaadin.flow.component.Component;
@@ -35,6 +36,10 @@ public class ContestForm extends FormLayout {
     TextField secondPlace = new TextField("Second place");
     TextField thirdPlace = new TextField("Third place");
 
+//    ComboBox<Artist> firstPlaceComboBox = new ComboBox<>("First place");
+//    ComboBox<Artist> secondPlaceComboBox = new ComboBox<>("Second place");
+//    ComboBox<Artist> thirdPlaceComboBox = new ComboBox<>("Third place");
+
     Button save = new Button("Save");
     Button delete = new Button("Delete");
     Button close = new Button("Cancel");
@@ -42,7 +47,7 @@ public class ContestForm extends FormLayout {
     Binder<Contest> binder = new Binder<>(Contest.class);
 
     public ContestForm(List<Artist> artistList, List<Organizer> organizerList, List<CulturalBuilding> culturalBuildingList,
-                       ContestService contestService, PrizewinnerService prizewinnerService) {
+                       ContestService contestService, PrizewinnerService prizewinnerService, ArtistService artistService) {
         addClassName("contest-form");
         binder.bindInstanceFields(this);
         artists.setItems(artistList);
@@ -57,9 +62,21 @@ public class ContestForm extends FormLayout {
         end_date.setClearButtonVisible(true);
 
         binder.bind(firstPlace, contest -> contest.getWinnerNameByPlace(contestService, 1), (contest, s) -> contest.setWinnerByPlace(prizewinnerService, firstPlace.getValue(), 1));
-        System.out.println(firstPlace.getValue());
         binder.bind(secondPlace, contest -> contest.getWinnerNameByPlace(contestService, 2), (contest, s) -> contest.setWinnerByPlace(prizewinnerService, secondPlace.getValue(), 2));
         binder.bind(thirdPlace, contest -> contest.getWinnerNameByPlace(contestService, 3), (contest, s) -> contest.setWinnerByPlace(prizewinnerService, thirdPlace.getValue(), 3));
+
+//        firstPlaceComboBox.setItemLabelGenerator(Artist::getFull_name);
+//        secondPlaceComboBox.setItemLabelGenerator(Artist::getFull_name);
+//        thirdPlaceComboBox.setItemLabelGenerator(Artist::getFull_name);
+//
+//        binder.bind(firstPlaceComboBox, contest -> null,
+//                (contest, artist) -> contest.setWinnerByPlace(prizewinnerService, artist, 1));
+//
+//        binder.bind(secondPlaceComboBox, contest -> null,
+//                (contest, artist) -> contest.setWinnerByPlace(prizewinnerService, artist, 2));
+//
+//        binder.bind(thirdPlaceComboBox, contest -> null,
+//                (contest, artist) -> contest.setWinnerByPlace(prizewinnerService, artist, 3));
 
         add(
                 name,
@@ -73,6 +90,9 @@ public class ContestForm extends FormLayout {
                 firstPlace,
                 secondPlace,
                 thirdPlace,
+//                firstPlaceComboBox,
+//                secondPlaceComboBox,
+//                thirdPlaceComboBox,
                 createButtonsLayout()
         );
     }

@@ -1,9 +1,7 @@
 package com.bd.philharmonic.Backend.Service;
 
-import com.bd.philharmonic.Backend.Entity.Concert;
 import com.bd.philharmonic.Backend.Entity.Contest;
 import com.bd.philharmonic.Backend.Repository.ContestRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

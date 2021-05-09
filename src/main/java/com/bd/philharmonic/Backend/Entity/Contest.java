@@ -2,14 +2,12 @@ package com.bd.philharmonic.Backend.Entity;
 
 import com.bd.philharmonic.Backend.Service.ContestService;
 import com.bd.philharmonic.Backend.Service.PrizewinnerService;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -57,32 +55,74 @@ public class Contest extends Event {
         return "";
     }
 
+//    public Artist getWinnerNameByPlace(Integer place) {
+//        for (Prizewinner prizewinner : prizewinners) {
+//            if (prizewinner.getPlace() == place) {
+//                return prizewinner.getArtist();
+//            }
+//        }
+//        return null;
+//    }
+
     public void setWinnerByPlace(PrizewinnerService prizewinnerService, String name, Integer place) {
-        for (Prizewinner next : prizewinners) {
-            if (next.getPlace() == place && !next.getArtist().getFull_name().isEmpty()) { // указанное место уже занято другим человеком
-                prizewinnerService.delete(next);
-                for (Artist artist : artists) {
-                    if (artist.getFull_name().equals(name)) {
-                        Prizewinner prizewinner = new Prizewinner();
-                        prizewinner.setPlace(place);
-                        prizewinner.setContest(this);
-                        prizewinner.setArtist(artist);
-                        prizewinnerService.save(prizewinner);
-                    }
+        if (name.isEmpty()) {
+            return;
+        }
+
+        Artist artistToInsert = null;
+        for (Artist artist : artists) {
+            if (artist.getFull_name().equals(name)) {
+                artistToInsert = artist;
+                break;
+            }
+        }
+
+        if (artistToInsert == null) {
+            return;
+        }
+
+        if (prizewinners.size() == 0) {
+            addPrizewinner(prizewinnerService, place, this, artistToInsert);
+        }
+
+        if (prizewinners.size() > 0) {
+            for (Prizewinner prizewinner : prizewinners) {
+                if (prizewinner.getArtist().getFull_name().equals(name)) {
+                    return;
                 }
-                return; // данного артиста нет в нашей базе
-            } else  { // место пусто, просто добавляем нового
-                for (Artist artist : artists) {
-                    if (artist.getFull_name().equals(name)) {
-                        Prizewinner prizewinner = new Prizewinner();
-                        prizewinner.setPlace(place);
-                        prizewinner.setContest(this);
-                        prizewinner.setArtist(artist);
-                        prizewinnerService.save(prizewinner);
-                    }
+            }
+            for (Prizewinner prizewinner : prizewinners) {
+                if (prizewinner.getPlace() == place) {
+                    prizewinnerService.delete(prizewinner);
+                    addPrizewinner(prizewinnerService, place, this, artistToInsert);
                 }
             }
         }
+
+    }
+
+//    public void setWinnerByPlace(PrizewinnerService prizewinnerService, Artist artistToInsert, Integer place) {
+//        if (prizewinners.size() > 0 && artistToInsert != null) {
+//            for (Prizewinner prizewinner : prizewinners) {
+//                if (prizewinner.getArtist().getId_artist().equals(artistToInsert.getId_artist())) {
+//                    return;
+//                }
+//                if (prizewinner.getPlace() == place) {
+//                    prizewinner.setArtist(artistToInsert);
+//                    prizewinnerService.save(prizewinner);
+//                    return;
+//                }
+//            }
+//            addPrizewinner(prizewinnerService, place, this, artistToInsert);
+//        }
+//    }
+
+    private void addPrizewinner(PrizewinnerService prizewinnerService, Integer place, Contest contest, Artist artist) {
+        Prizewinner prizewinner = new Prizewinner();
+        prizewinner.setPlace(place);
+        prizewinner.setContest(contest);
+        prizewinner.setArtist(artist);
+        prizewinnerService.save(prizewinner);
     }
 
     @Override

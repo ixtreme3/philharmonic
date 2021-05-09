@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PrizewinnerRepository extends JpaRepository<Prizewinner, Long> {
 
-
 }

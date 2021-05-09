@@ -50,4 +50,19 @@ public interface ArtistRepository extends JpaRepository<Artist, Long> {
             ) """, nativeQuery = true)
     List<Artist> getArtistWithMoreThanOneGenre();
 
+    @Query(value = """
+            select a.id_artist, a.full_name, a.age, a.gender from artist a
+            join event_artist ea on a.id_artist = ea.id_artist
+            join event e on e.id_event = ea.id_event
+            where e.name = :param""", nativeQuery = true)
+    List<Artist> getArtistsByContest(@Param("param") String param);
+
+    @Query(value = """
+            select a.id_artist, a.full_name, a.age, a.gender from artist a
+            join prizewinner p on a.id_artist = p.id_artist
+            join contest c on c.id_event = p.id_event
+            join event e on e.id_event = c.id_event
+            where e.name = :param""", nativeQuery = true)
+    List<Artist> getArtistsPrizewinnersByContestName(@Param("param") String param);
+
 }
