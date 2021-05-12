@@ -9,7 +9,7 @@ import java.util.Set;
 public class Impresario {
 
     @Id
-    @SequenceGenerator(name = "impresario_sequence", sequenceName = "impresario_sequence")
+    @SequenceGenerator(name = "impresario_sequence", sequenceName = "impresario_sequence", initialValue = 13)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "impresario_sequence")
     private Long id_impresario;
 

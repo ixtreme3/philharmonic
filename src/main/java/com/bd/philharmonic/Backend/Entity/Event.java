@@ -11,7 +11,7 @@ import java.util.Set;
 public class Event {
 
     @Id
-    @SequenceGenerator(name = "event_sequence", sequenceName = "event_sequence", initialValue = 1)
+    @SequenceGenerator(name = "event_sequence", sequenceName = "event_sequence", initialValue = 17)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_sequence")
     private Long id_event;
 
@@ -38,7 +38,7 @@ public class Event {
     @JoinColumn(name = "id_place", nullable = false)
     private CulturalBuilding culturalBuilding;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "event_artist",
             joinColumns = { @JoinColumn(name = "id_event") },
@@ -46,7 +46,7 @@ public class Event {
     )
     Set<Artist> artists = new HashSet<>();
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "event_organizer",
             joinColumns = { @JoinColumn(name = "id_event") },
@@ -119,7 +119,10 @@ public class Event {
     }
 
     public String getCulturalBuildingName_String(){
-        return culturalBuilding.getName();
+        if (this.culturalBuilding != null) {
+            return culturalBuilding.getName();
+        }
+        return "";
     }
 
     @Override

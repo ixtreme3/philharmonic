@@ -10,7 +10,7 @@ import java.util.Set;
 public class Organizer {
 
     @Id
-    @SequenceGenerator(name = "organizer_sequence", sequenceName = "organizer_sequence")
+    @SequenceGenerator(name = "organizer_sequence", sequenceName = "organizer_sequence", initialValue = 13)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "organizer_sequence")
     private Long id_organizer;
 

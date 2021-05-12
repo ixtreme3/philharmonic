@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Prizewinner {
 
     @Id
-    @SequenceGenerator(name = "prizewinner_sequence", sequenceName = "prizewinner_sequence")
+    @SequenceGenerator(name = "prizewinner_sequence", sequenceName = "prizewinner_sequence", initialValue = 7)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prizewinner_sequence")
     private Long id_prizewinner;
 

@@ -27,7 +27,7 @@ CREATE TABLE theater
 CREATE TABLE event
 (
     id_event    bigint NOT NULL,
-    id_place    bigint NOT NULL,
+    id_place    bigint,
     name        text NOT NULL,
     visit_price integer NOT NULL CHECK (visit_price >= 0),
     start_date  date NOT NULL,

@@ -10,7 +10,7 @@ import java.util.Set;
 public class Artist {
 
     @Id
-    @SequenceGenerator(name = "artist_sequence", sequenceName = "artist_sequence")
+    @SequenceGenerator(name = "artist_sequence", sequenceName = "artist_sequence", initialValue = 7)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "artist_sequence")
     private Long id_artist;
 
@@ -20,7 +20,7 @@ public class Artist {
 
     private String gender;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "artist_impresario",
             joinColumns = { @JoinColumn(name = "id_artist") },
@@ -28,7 +28,7 @@ public class Artist {
     )
     Set<Impresario> impresarios = new HashSet<>();
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "artist_genre",
             joinColumns = { @JoinColumn(name = "id_artist") },

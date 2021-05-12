@@ -9,7 +9,7 @@ import java.util.Set;
 public class Genre {
 
     @Id
-    @SequenceGenerator(name = "genre_sequence", sequenceName = "genre_sequence")
+    @SequenceGenerator(name = "genre_sequence", sequenceName = "genre_sequence", initialValue = 8)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genre_sequence")
     private Long id_genre;
 

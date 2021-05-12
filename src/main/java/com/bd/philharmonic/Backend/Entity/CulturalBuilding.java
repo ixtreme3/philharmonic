@@ -10,7 +10,7 @@ import java.util.Set;
 public class CulturalBuilding {
 
     @Id
-    @SequenceGenerator(name = "cultural_building_sequence", sequenceName = "cultural_building_sequence", initialValue = 7)
+    @SequenceGenerator(name = "cultural_building_sequence", sequenceName = "cultural_building_sequence", initialValue = 11)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cultural_building_sequence")
     private Long id_place;
 

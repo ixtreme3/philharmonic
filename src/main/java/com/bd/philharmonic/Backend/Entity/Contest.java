@@ -2,10 +2,10 @@ package com.bd.philharmonic.Backend.Entity;
 
 import com.bd.philharmonic.Backend.Service.ContestService;
 import com.bd.philharmonic.Backend.Service.PrizewinnerService;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
@@ -18,6 +18,7 @@ public class Contest extends Event {
     private int number_of_participants;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "contest")
+    @NotFound(action = NotFoundAction.IGNORE)
     private Set<Prizewinner> prizewinners = new HashSet<>();
 
     public Contest(String name, int visit_price, LocalDate start_date, LocalDate end_date, int number_of_participants) {
@@ -55,15 +56,6 @@ public class Contest extends Event {
         return "";
     }
 
-//    public Artist getWinnerNameByPlace(Integer place) {
-//        for (Prizewinner prizewinner : prizewinners) {
-//            if (prizewinner.getPlace() == place) {
-//                return prizewinner.getArtist();
-//            }
-//        }
-//        return null;
-//    }
-
     public void setWinnerByPlace(PrizewinnerService prizewinnerService, String name, Integer place) {
         if (name.isEmpty()) {
             return;
@@ -76,7 +68,6 @@ public class Contest extends Event {
                 break;
             }
         }
-
         if (artistToInsert == null) {
             return;
         }
@@ -93,29 +84,13 @@ public class Contest extends Event {
             }
             for (Prizewinner prizewinner : prizewinners) {
                 if (prizewinner.getPlace() == place) {
-                    prizewinnerService.delete(prizewinner);
                     addPrizewinner(prizewinnerService, place, this, artistToInsert);
+                    prizewinnerService.delete(prizewinner);
+                    break;
                 }
             }
         }
-
     }
-
-//    public void setWinnerByPlace(PrizewinnerService prizewinnerService, Artist artistToInsert, Integer place) {
-//        if (prizewinners.size() > 0 && artistToInsert != null) {
-//            for (Prizewinner prizewinner : prizewinners) {
-//                if (prizewinner.getArtist().getId_artist().equals(artistToInsert.getId_artist())) {
-//                    return;
-//                }
-//                if (prizewinner.getPlace() == place) {
-//                    prizewinner.setArtist(artistToInsert);
-//                    prizewinnerService.save(prizewinner);
-//                    return;
-//                }
-//            }
-//            addPrizewinner(prizewinnerService, place, this, artistToInsert);
-//        }
-//    }
 
     private void addPrizewinner(PrizewinnerService prizewinnerService, Integer place, Contest contest, Artist artist) {
         Prizewinner prizewinner = new Prizewinner();
