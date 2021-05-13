@@ -23,7 +23,11 @@ public class ContestService {
         }
     }
 
-    public List<String> getContestPrizewinners(String param) {
+    public List<String> getContestPrizewinners_String(String param) {
+        return contestRepository.getContestPrizewinners_String(param);
+    }
+
+    public List<Object[]> getContestPrizewinners(String param) {
         return contestRepository.getContestPrizewinners(param);
     }
 

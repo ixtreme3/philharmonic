@@ -47,7 +47,7 @@ public class Contest extends Event {
     }
 
     public String getWinnerNameByPlace(ContestService contestService, Integer place) {
-        List<String> contestPrizewinners = contestService.getContestPrizewinners(this.getName());
+        List<String> contestPrizewinners = contestService.getContestPrizewinners_String(this.getName());
         for (String next : contestPrizewinners) {
             if (next.contains(place.toString())){
                 return next.split(",")[0];

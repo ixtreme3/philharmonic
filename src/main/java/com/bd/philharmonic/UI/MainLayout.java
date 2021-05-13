@@ -92,14 +92,23 @@ public class MainLayout extends AppLayout {
         RouterLink query6Link = new RouterLink("Query №6", Q_6.class);
         query6Link.setHighlightCondition(HighlightConditions.sameLocation());
 
+        RouterLink query7Link = new RouterLink("Query №7", Q_7.class);
+        query7Link.setHighlightCondition(HighlightConditions.sameLocation());
+
         RouterLink query8Link = new RouterLink("Query №8", Q_8.class);
         query8Link.setHighlightCondition(HighlightConditions.sameLocation());
 
         RouterLink query9Link = new RouterLink("Query №9", Q_9.class);
         query9Link.setHighlightCondition(HighlightConditions.sameLocation());
 
+        RouterLink query10Link = new RouterLink("Query №10", Q_10.class);
+        query10Link.setHighlightCondition(HighlightConditions.sameLocation());
+
         RouterLink query11Link = new RouterLink("Query №11", Q_11.class);
         query11Link.setHighlightCondition(HighlightConditions.sameLocation());
+
+        RouterLink query12Link = new RouterLink("Query №12", Q_12.class);
+        query12Link.setHighlightCondition(HighlightConditions.sameLocation());
 
         addToDrawer(new VerticalLayout(
             theatersLink,
@@ -118,9 +127,12 @@ public class MainLayout extends AppLayout {
             query4Link,
             query5Link,
             query6Link,
+            query7Link,
             query8Link,
             query9Link,
-            query11Link
+            query10Link,
+            query11Link,
+            query12Link
         ));
     }
 

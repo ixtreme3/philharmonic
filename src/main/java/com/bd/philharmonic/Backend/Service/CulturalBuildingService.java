@@ -4,6 +4,7 @@ import com.bd.philharmonic.Backend.Entity.CulturalBuilding;
 import com.bd.philharmonic.Backend.Repository.CulturalBuildingRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -22,5 +23,9 @@ public class CulturalBuildingService {
     public Integer getIdByName(String param) {
         return culturalBuildingRepository.getIdByName(param);
     };
+
+    public List<Object[]> getCulturalBuildingsAndRelatedEventsWithinGivenTimePeriod(LocalDate startDate, LocalDate endDate) {
+        return culturalBuildingRepository.getCulturalBuildingsAndRelatedEventsWithinGivenTimePeriod(startDate, endDate);
+    }
 
 }

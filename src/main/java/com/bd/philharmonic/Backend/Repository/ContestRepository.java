@@ -21,6 +21,15 @@ public interface ContestRepository extends JpaRepository<Contest, Long> {
             join contest c on c.id_event = p.id_event
             join event e on c.id_event = e.id_event
             where e.name = :param""", nativeQuery = true)
-    List<String> getContestPrizewinners(@Param("param") String param);
+    List<String> getContestPrizewinners_String(@Param("param") String param);
+
+    // Запрос 7: Получить список призеров указанного конкурса.
+    @Query(value = """
+            select a.full_name, p.place from artist a
+            join prizewinner p on a.id_artist = p.id_artist
+            join contest c on c.id_event = p.id_event
+            join event e on c.id_event = e.id_event
+            where e.name = :param""", nativeQuery = true)
+    List<Object[]> getContestPrizewinners(String param);
 
 }

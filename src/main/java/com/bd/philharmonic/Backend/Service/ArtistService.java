@@ -3,6 +3,8 @@ package com.bd.philharmonic.Backend.Service;
 import com.bd.philharmonic.Backend.Entity.Artist;
 import com.bd.philharmonic.Backend.Repository.ArtistRepository;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -40,6 +42,10 @@ public class ArtistService {
 
     public List<Artist> getArtistsPrizewinnersByContestName(String name) {
         return artistRepository.getArtistsPrizewinnersByContestName(name);
+    }
+
+    public List<Artist> getArtistsNotParticipatingInContestsWithinGivenTimePeriod(LocalDate startDate, LocalDate endDate) {
+        return artistRepository.getArtistsNotParticipatingInContestsWithinGivenTimePeriod(startDate, endDate);
     }
 
     public void save(Artist artist) {

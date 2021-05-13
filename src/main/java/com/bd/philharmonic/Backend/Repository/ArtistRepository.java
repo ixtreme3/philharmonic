@@ -1,15 +1,13 @@
 package com.bd.philharmonic.Backend.Repository;
 
 import com.bd.philharmonic.Backend.Entity.Artist;
-import com.bd.philharmonic.Backend.Entity.Genre;
-import com.bd.philharmonic.Backend.Entity.Organizer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Repository
 public interface ArtistRepository extends JpaRepository<Artist, Long> {
@@ -64,5 +62,17 @@ public interface ArtistRepository extends JpaRepository<Artist, Long> {
             join event e on e.id_event = c.id_event
             where e.name = :param""", nativeQuery = true)
     List<Artist> getArtistsPrizewinnersByContestName(@Param("param") String param);
+
+    // Запрос 10: Получить список артистов, не участвовавших ни в каких конкурсах в течение определенного периода времени.
+    @Query(value = """
+            select * from artist
+            where id_artist not in (
+                select a.id_artist from artist a
+                join event_artist ea on a.id_artist = ea.id_artist
+                join event e on e.id_event = ea.id_event
+                join contest c on e.id_event = c.id_event
+                where e.start_date > :startDate and e.end_date < :endDate
+            )""", nativeQuery = true)
+    List<Artist> getArtistsNotParticipatingInContestsWithinGivenTimePeriod(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
 }
