@@ -1,6 +1,5 @@
 package com.bd.philharmonic.Backend.Repository;
 
-import com.bd.philharmonic.Backend.Entity.Artist;
 import com.bd.philharmonic.Backend.Entity.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

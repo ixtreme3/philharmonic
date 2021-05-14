@@ -46,6 +46,7 @@ public class ArtistView extends VerticalLayout {
     }
 
     private void deleteArtist(ArtistForm.DeleteEvent artist) {
+//        artistService.delete_custom(artist.getArtist());
         artistService.delete(artist.getArtist());
         listArtists();
         closeEditor();

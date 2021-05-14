@@ -20,7 +20,7 @@ public class Artist {
 
     private String gender;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH}, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "artist_impresario",
             joinColumns = { @JoinColumn(name = "id_artist") },
@@ -28,7 +28,7 @@ public class Artist {
     )
     Set<Impresario> impresarios = new HashSet<>();
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH}, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "artist_genre",
             joinColumns = { @JoinColumn(name = "id_artist") },
@@ -36,7 +36,7 @@ public class Artist {
     )
     Set<Genre> genres = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "artists")
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "artists")
     private final Set<Event> events = new HashSet<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "artist")

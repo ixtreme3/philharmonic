@@ -15,7 +15,7 @@ public class Genre {
 
     private String genre_name;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "genres")
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "genres")
     private final Set<Artist> artists = new HashSet<>();
 
     public Long getId_genre() {
@@ -32,6 +32,10 @@ public class Genre {
 
     public void setGenre_name(String genre_name) {
         this.genre_name = genre_name;
+    }
+
+    public Set<Artist> getArtists() {
+        return artists;
     }
 
     @Override

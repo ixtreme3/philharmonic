@@ -38,7 +38,7 @@ public class Event {
     @JoinColumn(name = "id_place", nullable = false)
     private CulturalBuilding culturalBuilding;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH}, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "event_artist",
             joinColumns = { @JoinColumn(name = "id_event") },
@@ -46,7 +46,7 @@ public class Event {
     )
     Set<Artist> artists = new HashSet<>();
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH}, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "event_organizer",
             joinColumns = { @JoinColumn(name = "id_event") },

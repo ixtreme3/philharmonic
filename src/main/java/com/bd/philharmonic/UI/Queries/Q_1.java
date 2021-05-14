@@ -1,5 +1,6 @@
 package com.bd.philharmonic.UI.Queries;
 
+import com.bd.philharmonic.Backend.Entity.CulturalBuilding;
 import com.bd.philharmonic.Backend.Entity.HouseOfCulture;
 import com.bd.philharmonic.Backend.Entity.Theater;
 import com.bd.philharmonic.Backend.Service.HouseOfCultureService;
@@ -53,6 +54,11 @@ public class Q_1 extends VerticalLayout {
     }
 
     private void createAndSetProperGrid(String type, String count_str) {
+        if (type.isEmpty() || count_str.isEmpty()) {
+            Grid<Object> grid = (Grid<Object>) this.getComponentAt(1);
+            grid.setItems(Collections.emptyList());
+        }
+
         if (!count_str.isEmpty() && (type.equals("Театр") || type.equals("театр"))) {
             int count = Integer.parseInt(count_str);
             Grid<Theater> grid = new Grid<>(Theater.class);

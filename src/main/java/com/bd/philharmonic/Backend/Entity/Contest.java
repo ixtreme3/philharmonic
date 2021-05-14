@@ -17,7 +17,7 @@ public class Contest extends Event {
 
     private int number_of_participants;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "contest")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "contest")
     @NotFound(action = NotFoundAction.IGNORE)
     private Set<Prizewinner> prizewinners = new HashSet<>();
 
@@ -89,6 +89,7 @@ public class Contest extends Event {
                     break;
                 }
             }
+            addPrizewinner(prizewinnerService, place, this, artistToInsert);
         }
     }
 

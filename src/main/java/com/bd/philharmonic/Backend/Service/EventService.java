@@ -1,9 +1,7 @@
 package com.bd.philharmonic.Backend.Service;
 
-import com.bd.philharmonic.Backend.Entity.Artist;
 import com.bd.philharmonic.Backend.Entity.Event;
 import com.bd.philharmonic.Backend.Repository.EventRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -52,7 +50,5 @@ public class EventService {
     public void delete(Event event) {
         eventRepository.delete(event);
     }
-
-
 
 }

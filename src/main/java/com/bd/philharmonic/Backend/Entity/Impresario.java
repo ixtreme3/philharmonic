@@ -19,7 +19,7 @@ public class Impresario {
 
     private String gender;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "impresarios")
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "impresarios")
     private final Set<Artist> artists = new HashSet<>();
 
     public Long getId_impresario() {
@@ -52,6 +52,10 @@ public class Impresario {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public Set<Artist> getArtists() {
+        return artists;
     }
 
     @Override
