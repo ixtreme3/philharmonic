@@ -20,14 +20,14 @@ public class Q_8 extends VerticalLayout {
 
     private final EventService eventService;
 
-    private final Grid<Event> grid;
+    private final Grid<Object[]> grid;
 
     private final TextField fieldBuildingName = new TextField();
 
-    public Q_8(EventService eventService, CulturalBuildingRepository culturalBuildingRepository) {
+    public Q_8(EventService eventService) {
         this.eventService = eventService;
         addClassName("query_8_view");
-        this.grid = new Grid<>(Event.class);
+        this.grid = new Grid<>();
 
         configureGrid();
         add(getToolBar(), grid);
@@ -49,10 +49,10 @@ public class Q_8 extends VerticalLayout {
 
     private void configureGrid() {
         grid.addClassName("query_8_grid");
-        grid.setColumns("name", "visit_price", "start_date", "end_date");
-        grid.getColumnByKey("visit_price").setHeader("Visit price");
-        grid.getColumnByKey("start_date").setHeader("Start date");
-        grid.getColumnByKey("end_date").setHeader("End date");
+        grid.addColumn(objects -> objects[2]).setHeader("Name");
+        grid.addColumn(objects -> objects[3]).setHeader("Visit price");
+        grid.addColumn(objects -> objects[4]).setHeader("Start date");
+        grid.addColumn(objects -> objects[5]).setHeader("End date");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
         setSizeFull();
     }

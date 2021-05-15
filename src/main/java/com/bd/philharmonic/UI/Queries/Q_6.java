@@ -1,6 +1,5 @@
 package com.bd.philharmonic.UI.Queries;
 
-import com.bd.philharmonic.Backend.Entity.Event;
 import com.bd.philharmonic.Backend.Service.EventService;
 import com.bd.philharmonic.UI.MainLayout;
 import com.vaadin.flow.component.button.Button;
@@ -22,7 +21,7 @@ public class Q_6 extends VerticalLayout {
 
     private final EventService eventService;
 
-    private final Grid<Event> grid;
+    private final Grid<Object[]> grid;
 
     private DatePicker startDate;
 
@@ -32,8 +31,8 @@ public class Q_6 extends VerticalLayout {
 
     public Q_6(EventService eventService) {
         this.eventService = eventService;
-        addClassName("query_5_view");
-        this.grid = new Grid<>(Event.class);
+        addClassName("query_6_view");
+        this.grid = new Grid<>();
 
         configureGrid();
         add(getToolBar(), grid);
@@ -65,23 +64,23 @@ public class Q_6 extends VerticalLayout {
 
     private void configureGrid() {
         grid.addClassName("query_6_grid");
-        grid.setColumns("name", "visit_price", "start_date", "end_date");
-        grid.getColumnByKey("visit_price").setHeader("Visit price");
-        grid.getColumnByKey("start_date").setHeader("Start date");
-        grid.getColumnByKey("end_date").setHeader("End date");
+        grid.addColumn(objects -> objects[2]).setHeader("Name");
+        grid.addColumn(objects -> objects[3]).setHeader("Visit price");
+        grid.addColumn(objects -> objects[4]).setHeader("Start date");
+        grid.addColumn(objects -> objects[5]).setHeader("End date");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
         setSizeFull();
     }
 
     private void listOrganizerEvents(String param) {
-        List<Event> eventList = eventService.getEventsByOrganizerName(param);
+        List<Object[]> eventList = eventService.getEventsByOrganizerName(param);
         if (eventList.isEmpty()) {
             grid.setItems(Collections.emptyList());
         } else grid.setItems(eventList);
     }
 
     private void listDateEvents(LocalDate startDate, LocalDate endDate) {
-        List<Event> eventList = eventService.getEventsBetweenDates(startDate, endDate);
+        List<Object[]> eventList = eventService.getEventsBetweenDates(startDate, endDate);
         if (eventList.isEmpty()) {
             grid.setItems(Collections.emptyList());
         } else grid.setItems(eventList);

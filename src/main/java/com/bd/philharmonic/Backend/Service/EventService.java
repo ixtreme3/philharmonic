@@ -28,15 +28,15 @@ public class EventService {
         return eventRepository.findAll();
     }
 
-    public List<Event> getEventsByCulturalBuildingName(String param) {
+    public List<Object[]> getEventsByCulturalBuildingName(String param) {
         return eventRepository.getEventsByCulturalBuildingName(param);
     }
 
-    public List<Event> getEventsBetweenDates(LocalDate startDate, LocalDate endDate) {
+    public List<Object[]> getEventsBetweenDates(LocalDate startDate, LocalDate endDate) {
         return eventRepository.getEventsBetweenDates(startDate, endDate);
     }
 
-    public List<Event> getEventsByOrganizerName(String param) {
+    public List<Object[]> getEventsByOrganizerName(String param) {
         return eventRepository.getEventsByOrganizerName(param);
     }
 
